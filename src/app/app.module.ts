@@ -3,10 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { DrawerComponent } from './shared/drawer/drawer.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DrawerComponent
   ],
   imports: [
     BrowserModule,
