@@ -1,0 +1,96 @@
+@use "../../../shared/styles/shared";
+
+
+.cc-footer {
+    width: 100%;
+    border-top: 2px solid shared.$border-color;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0px;
+
+    &__left {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    &__social-networks {
+
+        &__name {
+            font-family: shared.$primary-font;
+            font-size: 16px;
+            color: shared.$font-color;
+            font-weight: 400;
+        }
+
+        &__nav {
+            width: 200px;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        &__li {
+            list-style: none;
+        }
+
+        &__logo {
+            color: shared.$footer-color;
+            width: 24px;
+            height: 24px;
+            font-size: 24px;
+        }
+    }
+
+    &__name-box {
+        display: flex;
+        justify-content: flex-start;
+
+    }
+
+    &__logo {
+        width: 62px;
+        height: 62px;
+        margin-top: 5px;
+        filter: grayscale(100%);
+    }
+
+    &__project-name {
+        font-family: shared.$headline-font;
+        color: shared.$footer-color;
+        font-size: 22px;
+        
+        &--transparent {
+            opacity: 0.5;
+        }
+    }
+
+    &__right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__li {
+            list-style: none;
+           margin-bottom: 10px;
+           font-size: 16px;
+           font-family: shared.$primary-font;
+           color: shared.$font-color;
+        }
+    }
+
+    &__products {
+        font-family: shared.$primary-font;
+        font-size: 16px;
+        color: shared.$font-color;
+        font-weight: 600;
+    }
+
+    &__copyright {
+        font-family: shared.$primary-font;
+        color: shared.$font-color;
+        font-size: 14px;
+    }
+
+}
