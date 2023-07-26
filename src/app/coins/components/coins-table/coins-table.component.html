@@ -1,0 +1,7 @@
+<table class="cc-coins-table" >
+    <cc-coins-header></cc-coins-header>
+    <cc-coins-table-item *ngFor="let coin of coins;
+        let index = index" [coin]="coin" [index]="1+index"
+   >
+    </cc-coins-table-item>
+</table>

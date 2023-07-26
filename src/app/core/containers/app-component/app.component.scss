@@ -1,0 +1,15 @@
+.cc-main-container {
+    display: flex;
+    width: 100%;
+
+    &__drawer {
+        width: 20%;
+    }
+    &__main-content {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        margin: 0% 5%;
+        width: 100%;
+    }
+}  
