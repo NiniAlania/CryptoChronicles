@@ -1,0 +1,18 @@
+<section class="cc-table-item" [ngStyle]="{ 'background-color': index % 2 !== 0 ? 'transparent' : 'shared.$table-color' }">
+        <div class="cc-table-item__star-sign"><i (click)="addToFavorites()" [ngClass]="{ 'cc-favorites': isColored }" class="fa-regular fa-star cc-table-item__star"></i></div>
+        <div class="cc-table-item__number">{{ index }}</div>
+        <div class="cc-table-item__coin"> 
+            <img class="cc-table-item__coin__logo" src="{{coin?.image}}" alt="">        
+            {{ coin?.name  }}</div>
+        <div class="cc-table-item__price">${{ coin?.currentPrice }}</div>
+        <div class="cc-table-item__1h">{{ coin?.priceChangePercentage1hInCurrency | number: '1.1-1'}}%</div>
+        <div class="cc-table-item__24h">{{ coin?.priceChangePercentage24hInCurrency | number: '1.1-1' }}%</div>
+        <div  class="cc-table-item__7days">{{ coin?.priceChangePercentage7dInCurrency | number: '1.1-1' }}%</div>
+        <div class="cc-table-item__market-cap">${{ coin?.marketCap }}</div>
+        <div class="cc-table-item__volume">${{ coin?.marketCap }}</div>
+        <div class="cc-table-item__supply">{{ coin?.totalVolume }}</div>
+        <div class="cc-table-item__chart">
+            <img class="cc-table-item__chart__img" 
+                [src]="coin?.sparklineIn7d?.price | sparkline: 'large'">   
+        </div>    
+</section>

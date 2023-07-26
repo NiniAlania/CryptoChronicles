@@ -1,0 +1,106 @@
+@use "../../../shared/styles/shared";
+
+@mixin row {
+    width: 5%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@mixin second-part-row {
+    width: 12%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@mixin flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.cc-table-item {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    background-color:  shared.$table-color;
+
+    &__star-sign {
+        width: 4%;
+        @include flex-end;
+    }
+
+    &__star {
+        width: 20px;
+        height: 20px;
+    }
+
+
+    &__number {
+        @include flex-end;
+        width: 4%;
+        font-size: 12px;
+        font-family: shared.$primary-font;
+    }
+
+    &__coin {
+        width: 17%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 45px;
+
+        &__logo {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &__price {
+        @include flex-end;
+        width: 8%;
+    }
+
+    &__1h {
+       @include row
+    }
+
+    &__24h {
+        @include row
+     }
+
+    &__7days {
+        @include row
+    } 
+
+    &__market-cap {
+        @include second-part-row;
+    }
+
+    &__volume {
+        @include second-part-row;
+
+    }
+
+    &__supply {
+        @include second-part-row;
+    }
+
+    &__chart {
+        @include flex-end;
+        width: 15%;
+        margin-right: 5px;
+    }
+
+
+    &__chart__img {
+        width: 152px;
+        height: 48px;
+    }
+}
+
+.cc-favorites {
+    color: #f9c45c;
+}
+
