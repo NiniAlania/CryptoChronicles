@@ -4,6 +4,7 @@ import { RouterModule } from "@angular/router";
 import { AppComponent, NotFoundPageComponent } from "./containers";
 import { DrawerComponent } from "./components/drawer/drawer.component";
 import { HeaderComponent } from "./components/header/header.component";
+import { FooterComponent } from './components/footer/footer.component';
 
 export const COMPONENTS = [
     DrawerComponent,
@@ -20,7 +21,7 @@ export const CONTAINERS = [
         CommonModule,
         RouterModule,
     ],
-    declarations: [...COMPONENTS, ...CONTAINERS],
+    declarations: [...COMPONENTS, ...CONTAINERS, FooterComponent],
     exports: [...COMPONENTS, ...CONTAINERS],
 })
 export class CoreModule { }
