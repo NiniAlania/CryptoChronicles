@@ -13,7 +13,7 @@ import { HeaderService } from '../services';
 @Injectable()
 export class RouterEffects {
   updateTitle$ = createEffect(
-    () =>
+    () => 
       this.actions$.pipe(
         ofType(routerNavigatedAction),
         concatLatestFrom(() => this.store.select(fromRoot.selectRouteData)),

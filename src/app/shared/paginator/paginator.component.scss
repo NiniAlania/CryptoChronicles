@@ -1,0 +1,37 @@
+@use "../styles/shared";
+
+.cc-paginator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+
+    &__angle {
+        font-size: 24px;
+        font-size: 24px;
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 25px;
+        width: 400px;
+
+        &__li {
+            list-style: none;
+            width: 40px;
+            height: 40px;
+            font-family: shared.$primary-font;
+            font-size: 14px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.cc-active {
+    background-color: #355dff;
+    color: shared.$primary-color;
+}

@@ -7,6 +7,10 @@
   align-items: center;
   border-radius: 12px;
   background-color: #f5f5f6;
+  border: 2px solid white;
+}
+.cc-table-item:hover {
+  border: 2px solid #355dff;
 }
 .cc-table-item__star-sign {
   width: 4%;
@@ -34,6 +38,7 @@
 .cc-table-item__coin__logo {
   width: 20px;
   height: 20px;
+  padding-right: 10px;
 }
 .cc-table-item__price {
   display: flex;

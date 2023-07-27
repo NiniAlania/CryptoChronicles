@@ -13,6 +13,7 @@ import { CoinsTableItemComponent } from './components/coins-table-item/coins-tab
 import { CoinsHeaderComponent } from './components/coins-header/coins-header.component';
 import { SparklinePipe} from './pipes/sparkline-pipe.pipe';
 import { RoundNumberPipe } from './pipes/round-number.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 
 export const COMPONENTS = [
@@ -33,6 +34,7 @@ export const CONTAINERS = [
   imports: [
     CommonModule,
     CoinsRoutingModule,
+    SharedModule,
     StoreModule.forFeature(fromCoins.coinsFeatureKey, fromCoins.reducers),
     EffectsModule.forFeature(CoinsEffects),
   ],
