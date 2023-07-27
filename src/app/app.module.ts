@@ -11,12 +11,14 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterEffects } from './core/effects';
 import { SnakeToCamelInterceptor } from './core/interceptors';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    NgxPaginationModule,
     HttpClientModule,
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreRouterConnectingModule.forRoot(),
@@ -25,6 +27,8 @@ import { SnakeToCamelInterceptor } from './core/interceptors';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SnakeToCamelInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  declarations: [
+  ]
 })
 export class AppModule { }

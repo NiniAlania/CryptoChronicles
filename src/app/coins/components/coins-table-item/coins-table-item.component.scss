@@ -25,6 +25,11 @@
     align-items: center;
     border-radius: 12px;
     background-color:  shared.$table-color;
+    border: 2px solid shared.$primary-color;
+
+    &:hover {
+        border: 2px solid #355dff;
+    }
 
     &__star-sign {
         width: 4%;
@@ -54,6 +59,7 @@
         &__logo {
             width: 20px;
             height: 20px;
+            padding-right: 10px;
         }
     }
 
