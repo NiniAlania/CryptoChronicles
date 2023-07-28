@@ -37,6 +37,21 @@
     
 }
 
+
+@mixin caption {
+
+    font-family: shared.$primary-font;
+    text-transform: uppercase;
+    color: grey;
+}
+
+@mixin change-currency {
+    display: flex;
+    align-items: center;
+    height: 50%;
+    width: 85%;
+}
+
 .cc-drawer {
 
     width: 264px;
@@ -104,9 +119,7 @@
         width: 81%;
 
         &__caption {
-            font-family: shared.$primary-font;
-            text-transform: uppercase;
-            color: grey;
+            @include caption;
             font-size: 10px;
             margin-left: 50px;
         }
@@ -125,7 +138,7 @@
             }
 
             &__simbol {
-                width: 30px;
+                width: 25px;
                 height: 25px;
             }
 
@@ -137,5 +150,62 @@
             }
         }
 
+    }
+
+    &__change-currency {
+        display: flex;
+        flex-direction: column;
+        width: 215px;
+        height: 141px;
+        border-radius: 16px;
+        box-shadow: 0 18px 48px #00000014;
+        overflow: hidden;
+        margin: 10px 0px 0px 32px;
+    
+
+        &__caption {
+            @include caption;
+            font-size: 12px;
+            margin: 10px 0px 0px 15px;
+            height: 15%;
+
+        }
+       
+    }
+
+    &__picker {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 85%;
+    
+        &__usd {
+            @include change-currency;
+            border-bottom: 1px solid shared.$border-color;
+        }
+
+        &__eu {
+            @include change-currency;
+        }
+
+        &__logo {
+            width: 25px;
+            height: 25px;
+            margin-top: 5px;
+        }
+
+        &__name {
+            margin-top: 7px;
+            margin-left: 5px;
+        }
+    }
+
+    &__circle {
+        margin-left: 100px;
+    }
+
+    &__circle2 {
+        margin-left: 109px;
     }
 }

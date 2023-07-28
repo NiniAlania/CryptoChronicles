@@ -13,12 +13,28 @@
     </nav>
     <div class="cc-drawer__currency">
         <span class="cc-drawer__currency__caption">options</span>
-        <button class="cc-drawer__currency__picker">
+        <button class="cc-drawer__currency__picker" (click)="changeCurrency()" [style.background-color]="buttonColor">
             <div class="cc-drawer__currency___picker__content">
                 <img class="cc-drawer__currency__picker__simbol" src="../../../assets/usd.png" alt="">
                 <div class="cc-drawer__currency__picker__name">USD</div>
             </div>
-            <i class="fa-solid fa-caret-down"></i>
+            <i class="fa-solid fa-caret-{{pointer}}"></i>
         </button>
+    </div>
+    <div class="cc-drawer__change-currency" [style.display]="elementDisplay">
+        <span class="cc-drawer__change-currency__caption">currency</span>
+        <div class="cc-drawer__picker">
+            <div class="cc-drawer__picker__usd" (click)="currencyChanged('usd')">
+                <img class="cc-drawer__picker__logo" src="../../../assets/usd.png" alt="">
+                <div class="cc-drawer__picker__name">USD</div>
+                <i class="{{usdIcon}} cc-drawer__circle"></i>
+            </div>
+            <div class="cc-drawer__picker__eu"  (click)="currencyChanged('eur')">
+                <img class="cc-drawer__picker__logo" src="../../../assets/euro.webp" alt="">
+                <div class="cc-drawer__picker__name">EU</div>
+                <i class="{{euIcon}} cc-drawer__circle2"></i>
+            </div>
+
+        </div>
     </div>
 </div>
