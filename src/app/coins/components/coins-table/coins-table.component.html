@@ -1,7 +1,7 @@
 <table class="cc-coins-table" >
     <cc-coins-header></cc-coins-header>
     <cc-coins-table-item class="cc-coins-table__item" *ngFor="let coin of coins;
-        let index = index" [coin]="coin" [index]="1+index"
+        let index = index" [coin]="coin" [index]="1+index+offSet" [currency]="currency"
    >
     </cc-coins-table-item>
     <cc-paginator></cc-paginator>

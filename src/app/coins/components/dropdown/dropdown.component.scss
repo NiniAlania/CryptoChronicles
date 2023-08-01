@@ -1,0 +1,51 @@
+@use "../../../shared/styles/shared";
+
+.cc-dropdown {
+    display: flex;
+    justify-content: flex-end;
+
+    &__name {
+        font-size: 12px;
+        color: #777d92;
+        font-family: shared.$primary-font;
+        margin-right: 5px;
+    }
+
+    &__button {
+        width: 50px;
+        height: 30px;
+        border-radius: 8px;
+        border: 1px solid shared.$border-color;
+        background-color: shared.$primary-color;
+        position: relative;
+    }
+
+    &__options {
+        width: 36px;
+        height: 93px;
+        border-radius: 10px;
+        border: 1px solid shared.$border-color;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: 3px 0px 0px 75px;
+        position: absolute;
+        z-index: 10;
+        background-color: shared.$primary-color;
+        display: none;
+
+        &__size {
+            width: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover {
+                background-color: shared.$table-color;
+            }
+        }
+
+    }
+}
+

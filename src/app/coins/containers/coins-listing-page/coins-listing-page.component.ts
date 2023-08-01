@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { CoinMarketData } from '../../models';
 import * as fromCoins from '../../reducers';
 import { CoinsListingPageActions } from '../../actions';
+import * as fromRoot from '../../../reducers';
+
 
 @Component({
   selector: 'cc-coins-listing-page',
@@ -12,13 +14,26 @@ import { CoinsListingPageActions } from '../../actions';
 })
 export class CoinsListingPageComponent implements OnInit {
   coins$: Observable<CoinMarketData[]>;
+  page$: Observable<number>;
+  pageSize$: Observable<number>;
+  currency$: Observable<string>;
+
   
   constructor(private store: Store) { 
     this.coins$ = this.store.select(fromCoins.selectAllCoins);
+    this.page$ = this.store.select(fromCoins.selectPage);
+    this.pageSize$ = this.store.select(fromCoins.selectPageSize);
+    this.currency$ = this.store.select(fromRoot.selectCurrency);
+
   }
   
   ngOnInit() {
-    this.store.dispatch(CoinsListingPageActions.enter());
+    this.store.dispatch(CoinsListingPageActions.enter({}));
     this.coins$.subscribe(coins => console.log(coins));
+  }
+
+  changePageSize(pageSize: number) {
+    this.store.dispatch(CoinsListingPageActions.enter({pageSize}));
+
   }
 }

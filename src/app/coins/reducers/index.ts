@@ -32,3 +32,14 @@ export const {
     selectAll: selectAllCoins,
     selectTotal: selectTotalCoins,
 } = fromCoins.adapter.getSelectors(selectCoinsEntitiesState);
+
+
+export const selectPage = createSelector(
+    selectCoinsEntitiesState, 
+    (state) => state.page
+)
+
+export const selectPageSize = createSelector(
+    selectCoinsEntitiesState,
+    (state) => state.pageSize
+)

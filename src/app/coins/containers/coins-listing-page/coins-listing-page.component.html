@@ -1,3 +1,12 @@
-<ng-container *ngIf="(coins$ | async) as coins">
-    <cc-coin-table [coins]="coins"></cc-coin-table>
+<ng-container 
+    *ngIf="{
+        coins: (coins$ | async),
+        page: (page$ | async),
+        pageSize: (pageSize$ | async),
+        currency: (currency$ | async)
+    } as data">
+    <cc-dropdown [current]="data.pageSize" (pageSizeChanged)="changePageSize($event)"></cc-dropdown>
+    <cc-coin-table [coins]="data.coins"
+    [page]="data.page" 
+    [pageSize]="data.pageSize" [currency]="data.currency" ></cc-coin-table >
 </ng-container>

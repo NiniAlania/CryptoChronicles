@@ -14,6 +14,7 @@ import { CoinsHeaderComponent } from './components/coins-header/coins-header.com
 import { SparklinePipe} from './pipes/sparkline-pipe.pipe';
 import { RoundNumberPipe } from './pipes/round-number.pipe';
 import { SharedModule } from '../shared/shared.module';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 
 export const COMPONENTS = [
@@ -30,7 +31,7 @@ export const CONTAINERS = [
 
 
 @NgModule({
-  declarations: [...COMPONENTS, ...CONTAINERS, SparklinePipe, RoundNumberPipe],
+  declarations: [...COMPONENTS, ...CONTAINERS, SparklinePipe, RoundNumberPipe, DropdownComponent],
   imports: [
     CommonModule,
     CoinsRoutingModule,
