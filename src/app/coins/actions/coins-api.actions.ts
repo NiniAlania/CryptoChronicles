@@ -8,5 +8,5 @@ export const loadCoinMarkets = createAction(
 
 export const loadCoinMarketsSuccess = createAction(
     '[Coins/API] Load Coin Markets Success',
-    props<{ data: CoinMarketData[] }>()
+    props<{ data: CoinMarketData[], page: number, pageSize: number }>()
 );

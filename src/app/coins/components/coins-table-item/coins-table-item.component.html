@@ -4,12 +4,12 @@
         <div class="cc-table-item__coin"> 
             <img class="cc-table-item__coin__logo" src="{{coin?.image}}" alt="">        
             {{ coin?.name  }}</div>
-        <div class="cc-table-item__price">${{ coin?.currentPrice }}</div>
+        <div class="cc-table-item__price">{{currencySymbol}}{{ coin?.currentPrice }}</div>
         <div class="cc-table-item__1h">{{ coin?.priceChangePercentage1hInCurrency | number: '1.1-1'}}%</div>
         <div class="cc-table-item__24h">{{ coin?.priceChangePercentage24hInCurrency | number: '1.1-1' }}%</div>
         <div  class="cc-table-item__7days">{{ coin?.priceChangePercentage7dInCurrency | number: '1.1-1' }}%</div>
-        <div class="cc-table-item__market-cap">${{ coin?.marketCap }}</div>
-        <div class="cc-table-item__volume">${{ coin?.marketCap }}</div>
+        <div class="cc-table-item__market-cap">{{currencySymbol}}{{ coin?.marketCap }}</div>
+        <div class="cc-table-item__volume">{{currencySymbol}}{{ coin?.marketCap }}</div>
         <div class="cc-table-item__supply">{{ coin?.totalVolume }}</div>
         <div class="cc-table-item__chart">
             <img class="cc-table-item__chart__img" 

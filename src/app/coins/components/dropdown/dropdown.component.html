@@ -1,0 +1,16 @@
+<div class="cc-dropdown"> 
+    <div>
+        <div class="cc-dropdown__top">
+            <span class="cc-dropdown__name">Show Rows</span>
+            <button class="cc-dropdown__button" type="button" (click)="showPageSizes()">
+                {{current}}
+                <i class="fa-solid fa-caret-{{arrow}}"></i>
+            </button>
+        </div>
+        <div class="cc-dropdown__options" [style.display]="elementDisplay">
+            <div class="cc-dropdown__options__size" (click)="setPageSize(100)">100</div>
+            <div class="cc-dropdown__options__size" (click)="setPageSize(50)">50</div>
+            <div class="cc-dropdown__options__size" (click)="setPageSize(10)">10</div>
+        </div>
+    </div>
+</div>

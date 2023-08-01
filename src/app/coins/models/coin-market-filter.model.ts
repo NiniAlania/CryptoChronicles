@@ -10,12 +10,13 @@ export interface CoinMarketFilter {
     precision: number;
 }
 
-export function defaultCoinMarketFilter(): CoinMarketFilter {
+export function defaultCoinMarketFilter(page: string | undefined, currency: "usd" | "eur", pageSize?: number | undefined): CoinMarketFilter {
+    console.log('pagesize', pageSize);
     return {
-        vsCurrency: 'usd',
+        vsCurrency: currency,
         order: 'market_cap_desc',
-        perPage: 100,
-        page: 1,
+        perPage: pageSize ?? 100,
+        page: page ? +page : 1,
         sparkline: true,
         priceChangePercentage: '1h,24h,7d',
         locale: 'en',

@@ -14,7 +14,7 @@ export class DrawerComponent {
   usdIcon: string = 'fa-regular fa-circle';
   euIcon: string = 'fa-regular fa-circle';
 
-  @Output('currentCurrency') currentCurrency = new EventEmitter<string>();
+  @Output('currentCurrency') currentCurrency = new EventEmitter<'usd' | 'eur'>();
 
   constructor() {}
 
@@ -27,7 +27,7 @@ export class DrawerComponent {
     this.pointer = this.pointer === 'down' ? 'up' : 'down';
   }
 
-  currencyChanged(currency: string) {
+  currencyChanged(currency: 'usd' | 'eur') {
 
     if(currency === 'usd') {
       this.usdIcon = 'fa-solid fa-circle-check';
@@ -43,6 +43,3 @@ export class DrawerComponent {
 
   
 }
-
-
-// #EFEFEF
