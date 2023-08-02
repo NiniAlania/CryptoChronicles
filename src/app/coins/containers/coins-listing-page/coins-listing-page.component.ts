@@ -5,6 +5,7 @@ import { CoinMarketData } from '../../models';
 import * as fromCoins from '../../reducers';
 import { CoinsListingPageActions } from '../../actions';
 import * as fromRoot from '../../../reducers';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,13 +18,15 @@ export class CoinsListingPageComponent implements OnInit {
   page$: Observable<number>;
   pageSize$: Observable<number>;
   currency$: Observable<string>;
+  totalCoins$: Observable<number>;
 
   
-  constructor(private store: Store) { 
+  constructor(private store: Store, private router: Router) { 
     this.coins$ = this.store.select(fromCoins.selectAllCoins);
     this.page$ = this.store.select(fromCoins.selectPage);
     this.pageSize$ = this.store.select(fromCoins.selectPageSize);
     this.currency$ = this.store.select(fromRoot.selectCurrency);
+    this.totalCoins$ = this.store.select(fromCoins.selectCoinListTotal);
 
   }
   
@@ -35,5 +38,12 @@ export class CoinsListingPageComponent implements OnInit {
   changePageSize(pageSize: number) {
     this.store.dispatch(CoinsListingPageActions.enter({pageSize}));
 
+  }
+
+  changePage(pageNumber: number) {
+    this.router.navigate( 
+      ['/coins'],
+    { queryParams: { page: pageNumber}},
+    )
   }
 }

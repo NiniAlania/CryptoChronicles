@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterEffects } from './core/effects';
 import { SnakeToCamelInterceptor } from './core/interceptors';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot(RouterEffects),
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SnakeToCamelInterceptor, multi: true }

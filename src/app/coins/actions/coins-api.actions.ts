@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { CoinMarketData, CoinMarketFilter } from "../models";
+import { Coin, CoinMarketData, CoinMarketFilter } from "../models";
 
 export const loadCoinMarkets = createAction(
     '[Coins/API] Load Coin Markets',
@@ -9,4 +9,9 @@ export const loadCoinMarkets = createAction(
 export const loadCoinMarketsSuccess = createAction(
     '[Coins/API] Load Coin Markets Success',
     props<{ data: CoinMarketData[], page: number, pageSize: number }>()
+);
+
+export const loadCoinListSuccess = createAction(
+    '[Coins/API] Load Coin List Sucess',
+    props<{data: Coin[]}>()
 );
