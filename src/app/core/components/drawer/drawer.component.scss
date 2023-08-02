@@ -59,6 +59,7 @@
     border-right: 2px solid shared.$border-color;
     height: 100%;
     position: fixed;
+    z-index: 99;
 
     &__name-box {
         display: flex;
@@ -199,13 +200,37 @@
             margin-top: 7px;
             margin-left: 5px;
         }
+
+        &__circle {
+            margin-left: 100px;
+        }
+    
     }
 
-    &__circle {
-        margin-left: 100px;
-    }
+    &__authorization {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        border-bottom: 2px solid shared.$border-color;
 
-    &__circle2 {
-        margin-left: 109px;
+        &__sign {
+            font-family: shared.$primary-font;
+            font-size: 18px;
+            color: shared.$font-color;
+            width: 100px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+
+            &:hover {
+                background-color: shared.$hover-color;
+                color: shared.$primary-color;
+            }
+        }
     }
 }

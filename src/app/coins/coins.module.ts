@@ -17,10 +17,14 @@ import { SharedModule } from '../shared/shared.module';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 
+
 export const COMPONENTS = [
   CoinsTableComponent,
   CoinsTableItemComponent,
-  CoinsHeaderComponent
+  CoinsHeaderComponent,
+  SparklinePipe, 
+  RoundNumberPipe, 
+  DropdownComponent
 ];
 
 export const CONTAINERS = [
@@ -31,7 +35,7 @@ export const CONTAINERS = [
 
 
 @NgModule({
-  declarations: [...COMPONENTS, ...CONTAINERS, SparklinePipe, RoundNumberPipe, DropdownComponent],
+  declarations: [...COMPONENTS, ...CONTAINERS],
   imports: [
     CommonModule,
     CoinsRoutingModule,

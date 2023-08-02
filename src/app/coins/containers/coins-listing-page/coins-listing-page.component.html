@@ -3,10 +3,17 @@
         coins: (coins$ | async),
         page: (page$ | async),
         pageSize: (pageSize$ | async),
-        currency: (currency$ | async)
+        currency: (currency$ | async),
+        totalCoins: (totalCoins$ | async)
     } as data">
     <cc-dropdown [current]="data.pageSize" (pageSizeChanged)="changePageSize($event)"></cc-dropdown>
     <cc-coin-table [coins]="data.coins"
     [page]="data.page" 
     [pageSize]="data.pageSize" [currency]="data.currency" ></cc-coin-table >
+    <cc-paginator 
+    [pageSize]="data.pageSize"
+    [pageNumber]="data.page"
+    [collectionSize]="data.totalCoins" 
+    (pageChanged)="changePage($event)"
+    ></cc-paginator>
 </ng-container>

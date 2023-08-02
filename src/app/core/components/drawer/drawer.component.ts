@@ -13,6 +13,8 @@ export class DrawerComponent {
   pointer: string = 'down';
   usdIcon: string = 'fa-regular fa-circle';
   euIcon: string = 'fa-regular fa-circle';
+  currency: string = 'USD';
+  logo: string = '../../../assets/usd.png';
 
   @Output('currentCurrency') currentCurrency = new EventEmitter<'usd' | 'eur'>();
 
@@ -32,9 +34,13 @@ export class DrawerComponent {
     if(currency === 'usd') {
       this.usdIcon = 'fa-solid fa-circle-check';
       this.euIcon = 'fa-regular fa-circle';
+      this.currency = 'USD';
+      this.logo = '../../../assets/usd.png';
     } else if(currency === 'eur') {
       this.euIcon = 'fa-solid fa-circle-check';
       this.usdIcon = 'fa-regular fa-circle';
+      this.currency = 'EUR';
+      this.logo = '../../../assets/euro.webp';
     }
 
     this.currentCurrency.emit(currency);

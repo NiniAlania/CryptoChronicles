@@ -1,11 +1,13 @@
 import * as fromCoins from './coins.reducer';
+import * as fromCoinsList from './coins-list.reducer';
 import * as fromRoot from '../../reducers';
 import { Action, combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
 
 export const coinsFeatureKey = 'coins';
 
 export interface CoinsState {
-    [fromCoins.coinsFeatureKey]: fromCoins.State
+    [fromCoins.coinsFeatureKey]: fromCoins.State,
+    [fromCoinsList.coinsListFeatureKey]: fromCoinsList.State
 }
 
 export interface State extends fromRoot.State {
@@ -15,7 +17,7 @@ export interface State extends fromRoot.State {
 export function reducers(state: CoinsState | undefined, action: Action) {
     return combineReducers({
         [fromCoins.coinsFeatureKey]: fromCoins.reducer,
-        
+        [fromCoinsList.coinsListFeatureKey]: fromCoinsList.reducer
     })(state, action);
 }
 
@@ -26,6 +28,11 @@ export const selectCoinsEntitiesState = createSelector(
     (state) => state.coins
 );
 
+export const selectCoinsListEntitiesState = createSelector(
+    selectCoinsState,
+    (state) => state.coinsList
+)
+
 export const {
     selectIds: selectCoinIds,
     selectEntities: selectCoinEntities,
@@ -33,6 +40,11 @@ export const {
     selectTotal: selectTotalCoins,
 } = fromCoins.adapter.getSelectors(selectCoinsEntitiesState);
 
+export const {
+    selectIds: selectCoinListIds,
+    selectEntities: SelectCoinListEntities,
+    selectTotal: selectCoinListTotal
+} = fromCoinsList.adapter.getSelectors(selectCoinsListEntitiesState);
 
 export const selectPage = createSelector(
     selectCoinsEntitiesState, 
@@ -43,3 +55,4 @@ export const selectPageSize = createSelector(
     selectCoinsEntitiesState,
     (state) => state.pageSize
 )
+

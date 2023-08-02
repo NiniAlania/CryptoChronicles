@@ -1,14 +1,10 @@
-<section  class="cc-paginator">
-    <i class="fa-solid fa-angle-left cc-paginator__angle"></i>
-    <nav class="cc-paginator__nav">
-        <li class="cc-paginator__nav__li cc-active">1</li>
-        <li class="cc-paginator__nav__li">2</li>
-        <li class="cc-paginator__nav__li">3</li>
-        <li class="cc-paginator__nav__li">4</li>
-        <li class="cc-paginator__nav__li">5</li>
-        <li class="cc-paginator__nav__li">6</li>
-        <li class="cc-paginator__nav__li">...</li>
-        <li class="cc-paginator__nav__li">47</li>
-    </nav>
-    <i class="fa-solid fa-angle-right cc-paginator__angle"></i>
-</section>
+<mat-paginator #paginator
+               class="cc-paginator"
+               (page)="handlePageEvent($event)"
+               [length]="collectionSize"
+               [pageSize]="pageSize"
+               [showFirstLastButtons]="true"
+               [pageSizeOptions]="[]"
+               [pageIndex]="pageNumber"
+               aria-label="Select page">
+</mat-paginator>
