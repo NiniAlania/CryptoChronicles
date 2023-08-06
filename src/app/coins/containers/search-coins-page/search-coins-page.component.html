@@ -1,1 +1,5 @@
-<p>search-coins-page works!</p>
+<input type="text" (keyup)="searchCoin($event)">
+
+<nav>
+    <li *ngFor="let coin of searchResult$ | async">{{coin.name}}</li>
+</nav>

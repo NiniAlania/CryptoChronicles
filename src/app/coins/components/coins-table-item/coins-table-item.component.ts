@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CoinMarketData } from '../../models';
 
 @Component({
@@ -6,18 +7,25 @@ import { CoinMarketData } from '../../models';
   templateUrl: './coins-table-item.component.html',
   styleUrls: ['./coins-table-item.component.scss']
 })
-export class CoinsTableItemComponent {
+export class CoinsTableItemComponent implements OnChanges {
   @Input() index: number = 1;
   @Input() coin: CoinMarketData | null = null;
   @Input() currency: string | null = null;
-  isColored = false
- 
+  @Input() match: boolean | undefined = false;
+
+  @Output() addedToFavorites = new EventEmitter<void>(); 
+  isColored: boolean | undefined = false;
+
+  ngOnChanges() {
+    this.isColored = this.match;
+  }
+
   addToFavorites() {
     this.isColored = !this.isColored;
+    this.addedToFavorites.emit();
   }
 
   get currencySymbol() {
-    console.log(this.currency);
     if (this.currency === 'usd') {
       return '$'
     } else if (this.currency === 'eur') {

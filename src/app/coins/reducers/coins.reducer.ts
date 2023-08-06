@@ -1,13 +1,13 @@
 import { EntityAdapter, EntityState, createEntityAdapter } from "@ngrx/entity";
 import { CoinMarketData } from "../models";
 import { createReducer, on } from "@ngrx/store";
-import { CoinsApiActions } from "../actions";
+import { CoinsListingPageActions } from "../actions";
 
 export const coinsFeatureKey = 'coins';
 
 export interface State extends EntityState<CoinMarketData> {
-    page: number,
-    pageSize: number
+    isFavorite: boolean[];
+
 }
 
 export const adapter: EntityAdapter<CoinMarketData> = createEntityAdapter<CoinMarketData>({
@@ -16,17 +16,15 @@ export const adapter: EntityAdapter<CoinMarketData> = createEntityAdapter<CoinMa
 });
 
 export const initialState: State = adapter.getInitialState({ 
-    page: 1, 
-    pageSize: 100
+    isFavorite: []
 });
 
 export const reducer = createReducer(
     initialState,
-    on(CoinsApiActions.loadCoinMarketsSuccess, (state, { data, page, pageSize }) => {
+    on(CoinsListingPageActions.loadCoinMarketsSuccess, (state, { data, isFavorite }) => {
         return {
-            ...adapter.setAll(data, state), 
-            page,
-            pageSize
+            ...adapter.setAll(data, state),
+            isFavorite
         }
     })
 )

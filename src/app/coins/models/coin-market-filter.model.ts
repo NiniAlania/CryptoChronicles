@@ -10,16 +10,22 @@ export interface CoinMarketFilter {
     precision: number;
 }
 
-export function defaultCoinMarketFilter(page: string | undefined, currency: "usd" | "eur", pageSize?: number | undefined): CoinMarketFilter {
-    console.log('pagesize', pageSize);
-    return {
+export function defaultCoinMarketFilter(page: number | undefined, currency: "usd" | "eur", pageSize?: number | undefined, favorites?: string[] | undefined): CoinMarketFilter {
+    let filter = {
         vsCurrency: currency,
         order: 'market_cap_desc',
         perPage: pageSize ?? 100,
-        page: page ? +page : 1,
+        page: page ? page : 1,
         sparkline: true,
         priceChangePercentage: '1h,24h,7d',
         locale: 'en',
-        precision: 2
-    };
+        precision: 2,
+        
+    } as CoinMarketFilter;
+
+    if (favorites) {
+        filter.ids = favorites?.join(',') 
+    }
+
+    return filter;
 }

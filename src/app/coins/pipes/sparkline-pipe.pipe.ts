@@ -22,8 +22,6 @@ export class SparklinePipe implements PipeTransform {
     const startPrice = data[0];
     const endPrice = data[data.length - 1];
 
-    console.log('startPrice', startPrice);
-    console.log('endPrice', endPrice);
 
     const chartColors = {
         red: "rgb(255, 82, 65)",
