@@ -4,15 +4,19 @@
         page: (page$ | async),
         pageSize: (pageSize$ | async),
         currency: (currency$ | async),
-        totalCoins: (totalCoins$ | async)
+        totalCoins: (totalCoins$ | async),
+        matchingList: (matchingList$ | async)
     } as data">
     <cc-dropdown [current]="data.pageSize" (pageSizeChanged)="changePageSize($event)"></cc-dropdown>
     <cc-coin-table [coins]="data.coins"
     [page]="data.page" 
-    [pageSize]="data.pageSize" [currency]="data.currency" ></cc-coin-table >
+    [pageSize]="data.pageSize" 
+    [currency]="data.currency" 
+    (addedToFavorites)="toogleFavorites($event)"
+    [matchingList]="data.matchingList"></cc-coin-table >
     <cc-paginator 
     [pageSize]="data.pageSize"
-    [pageNumber]="data.page"
+    [pageNumber]="data.page ? data.page - 1 : null"
     [collectionSize]="data.totalCoins" 
     (pageChanged)="changePage($event)"
     ></cc-paginator>

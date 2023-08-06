@@ -14,7 +14,6 @@ export class AppComponent {
   constructor(private store: Store) {}
 
   currencyChanged(currency: 'usd' | 'eur') {
-    console.log('currency', currency);
     this.store.dispatch(DrawerActions.changeCurrency({currency}));
   }
 

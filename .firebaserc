@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "crypto-chronicles-65020": {
+      "hosting": {
+        "crypto-chronicles": [
+          "crypto-chronicles-65020"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "crypto-chronicles-65020"
+  }
+}

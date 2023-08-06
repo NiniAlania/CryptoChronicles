@@ -13,6 +13,10 @@ import { RouterEffects } from './core/effects';
 import { SnakeToCamelInterceptor } from './core/interceptors';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   imports: [
@@ -25,6 +29,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot(RouterEffects),
     BrowserAnimationsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SnakeToCamelInterceptor, multi: true }

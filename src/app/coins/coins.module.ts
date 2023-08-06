@@ -8,7 +8,7 @@ import { SearchCoinsPageComponent } from './containers/search-coins-page/search-
 import * as fromCoins from './reducers';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { CoinsEffects } from './effects';
+import { CoinsEffects, FavoritesEffects, SearchEffects } from './effects';
 import { CoinsTableItemComponent } from './components/coins-table-item/coins-table-item.component';
 import { CoinsHeaderComponent } from './components/coins-header/coins-header.component';
 import { SparklinePipe} from './pipes/sparkline-pipe.pipe';
@@ -41,7 +41,7 @@ export const CONTAINERS = [
     CoinsRoutingModule,
     SharedModule,
     StoreModule.forFeature(fromCoins.coinsFeatureKey, fromCoins.reducers),
-    EffectsModule.forFeature(CoinsEffects),
+    EffectsModule.forFeature(CoinsEffects, FavoritesEffects, SearchEffects),
   ],
   exports: [...COMPONENTS, ...CONTAINERS],
 })

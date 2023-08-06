@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "crypto-chronicles",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

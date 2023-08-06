@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { createReducer, on } from "@ngrx/store";
-import { CoinsApiActions } from "../actions";
+import { CoinsListingPageActions } from "../actions";
 import { Coin, CoinMarketData } from "../models";
 
 export const coinsListFeatureKey = 'coinsList';
@@ -18,7 +18,7 @@ export const initialState: State = adapter.getInitialState({
 
 export const reducer = createReducer(
     initialState,
-    on(CoinsApiActions.loadCoinListSuccess, (state, {data}) => adapter.setAll(data, state))
+    on(CoinsListingPageActions.loadCoinListSuccess, (state, {data}) => adapter.setAll(data, state))
 )
 
 
