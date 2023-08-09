@@ -1,11 +1,11 @@
 import { createReducer, on } from "@ngrx/store";
 import { SearchPageActions } from "../actions";
-import { Coin } from "../models";
+import { Coin, SearchedCoin } from "../models";
 
 export const searchFeatureKey = 'search';
 
 export interface State {
-    searchResults: Coin[]
+    searchResults: SearchedCoin[]
 }
 
 export const initialState: State = {

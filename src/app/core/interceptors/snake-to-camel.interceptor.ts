@@ -69,6 +69,7 @@ export class SnakeToCamelInterceptor implements HttpInterceptor {
     }
 
     private camelToSnakeCase(key: string): string {
-        return key.replace(/([A-Z])/g, (m) => '_' + m.toLowerCase());
+        // return key.replace(/([A-Z])/g, (m) => '_' + m.toLowerCase());
+        return key.replace(/([a-z])([A-Z0-9])/g, '$1_$2').toLowerCase();
     }
 }

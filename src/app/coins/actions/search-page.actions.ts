@@ -1,9 +1,9 @@
 import { createAction, props } from "@ngrx/store"; 
-import { Coin } from "../models";
+import { Coin, SearchedCoin } from "../models";
 
 export const searchSuccess = createAction(
     '[Search Page] SearchSuccess',
-    props<{data: Coin[]}>()
+    props<{data: SearchedCoin[]}>()
 )
 
 export const search = createAction(

@@ -25,6 +25,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     CoreModule,
     NgxPaginationModule,
     HttpClientModule,
+    BrowserAnimationsModule, 
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot(RouterEffects),
