@@ -1,0 +1,15 @@
+<div class="cc-coin-page">
+    <aside class="cc-coin-page__top">
+        <div class="cc-coin-page__styling">
+            <button class="cc-coin-page__styling__button"  type="button" (click)="back()">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back To Listing</button>
+        </div>
+    </aside>
+   <aside class="cc-coin-page__middle">
+         <cc-coin-details [currency]="currency$ | async" [coinDetails]="coinDetails$ | async" [coinInfo]="coinInfo$ | async"></cc-coin-details>
+   </aside>
+   <aside class="cc-coin-page__bottom">
+     <cc-coin-price-chart [coinPrices]="coinPrices$ | async"></cc-coin-price-chart>
+   </aside>
+</div>

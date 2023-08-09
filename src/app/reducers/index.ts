@@ -26,9 +26,14 @@ export const selectCurrency = createSelector(
     fromCurrency.selectCurrency
 )
 
-export const { selectRouteData, selectQueryParam } = getRouterSelectors();
+export const { selectRouteData, selectQueryParam, selectRouteParam } = getRouterSelectors();
 
 export const selectPage = createSelector(
     selectQueryParam('page'),
     (state) => Number(state)
 );
+
+export const selectId = createSelector(
+    selectRouteParam('id'),
+    (state) => state
+)

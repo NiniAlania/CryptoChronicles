@@ -1,0 +1,43 @@
+@use "../../../shared/styles/shared";
+
+.cc-search-coin {
+    width: 100%;
+    padding-bottom: 30px;
+
+    &__input {
+        width: 50%;
+        height: 40px;
+        border: 2px solid shared.$border-color;
+        border-radius: 8px;
+        font-family: shared.$primary-font;
+        font-size: 18px;
+        padding-left: 10px ;
+    }
+
+    &__nav {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__for-nav {
+        display: flex;
+        align-items: center;
+        border:  1px solid shared.$border-color;
+        border-radius: 5px;
+        width: 80%;
+        height: 40px;
+        margin: 3px 0px 3px 3px;
+        box-shadow: 10px 18px 48px #00000014;
+        padding: 0px 0px 0px 5px ;
+
+
+        &__li {
+            list-style: none;
+            margin-left: 4px;
+        }
+
+    }
+
+
+}

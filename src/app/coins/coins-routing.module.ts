@@ -1,12 +1,13 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CoinsListingPageComponent, FavoriteCoinsListingPageComponent, SearchCoinsPageComponent } from "./containers";
+import { CoinPageComponent } from "./containers/coin-page/coin-page.component";
 
 const routes: Routes = [
     {
         path: '',
         component: CoinsListingPageComponent,
-        data: { title: 'Coins Listing' },
+        data: { title: 'Coins Listing' },  
     },
     {
         path: 'favorites',
@@ -17,6 +18,11 @@ const routes: Routes = [
         path: 'search',
         component: SearchCoinsPageComponent,
         data: { title: 'Search Coins'}
+    },
+    {
+        path: ':id',
+        component: CoinPageComponent,
+        data: {title: 'Coin Details'},
     }
 ];
 

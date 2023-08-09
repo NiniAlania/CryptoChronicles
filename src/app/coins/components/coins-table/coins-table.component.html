@@ -1,6 +1,7 @@
 <table class="cc-coins-table" >
     <cc-coins-header></cc-coins-header>
     <cc-coins-table-item class="cc-coins-table__item"
+        (click)="coinSelected(coin.id)"
          *ngFor="let coin of coins;
         let index = index"
         [match]="matchingList ? matchingList[index] : false"

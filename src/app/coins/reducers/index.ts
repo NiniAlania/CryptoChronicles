@@ -4,6 +4,7 @@ import * as fromFavorites from './favorites.reducer';
 import * as fromPage from './page.reducer';
 import * as fromRoot from '../../reducers';
 import * as fromSearch from './search.reducer';
+import * as fromCoin from './coin.reducer';
 
 import { Action, combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
 
@@ -14,8 +15,8 @@ export interface CoinsState {
     [fromCoinsList.coinsListFeatureKey]: fromCoinsList.State,
     [fromFavorites.favoritesFeatureKey]: fromFavorites.State,
     [fromPage.pageFeatureKey]: fromPage.State,
-    [fromSearch.searchFeatureKey]: fromSearch.State
-
+    [fromSearch.searchFeatureKey]: fromSearch.State,
+    [fromCoin.coinFeatureKey]: fromCoin.State
 }
 
 export interface State extends fromRoot.State {
@@ -28,7 +29,8 @@ export function reducers(state: CoinsState | undefined, action: Action) {
         [fromCoinsList.coinsListFeatureKey]: fromCoinsList.reducer,
         [fromFavorites.favoritesFeatureKey]: fromFavorites.reducer,
         [fromPage.pageFeatureKey]: fromPage.reducer,
-        [fromSearch.searchFeatureKey]: fromSearch.reducer
+        [fromSearch.searchFeatureKey]: fromSearch.reducer,
+        [fromCoin.coinFeatureKey]: fromCoin.reducer
     })(state, action);
 }
 
@@ -97,3 +99,22 @@ export const selectSearchResult = createSelector(
     (state) => state.searchResults
 )
 
+export const selectCoinState = createSelector(
+    selectCoinsState,
+    (state) => state.coin
+)
+
+export const selectCoinDetails = createSelector(
+    selectCoinState,
+    (state) => state.coinDetails
+)
+
+export const selectCoinPrices = createSelector(
+    selectCoinState,
+    (state) => state.coinPrices
+)
+
+export const selectCoinInfo = createSelector(
+    selectCoinState,
+    (state) => state.coinInfo
+)

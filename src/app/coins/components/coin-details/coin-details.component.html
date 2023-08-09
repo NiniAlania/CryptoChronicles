@@ -1,0 +1,30 @@
+<div class="cc-coin-details">
+    <div  class="cc-coin-details__name">
+        <img class="cc-coin-details__name__logo" src="{{coinInfo?.image?.small}}">
+        <h1 class="cc-coin-details__name__text">{{coinInfo?.name}}</h1> 
+    </div>
+    <div class="cc-coin-details__box">
+       <div class="cc-coin-details__top">
+            <div class="cc-coin-details__frame">
+                <h2>{{currencySymbol}}{{ coinDetails?.price }}</h2>
+                <div class="cc-coin-details__frame__price-change"> {{ coinDetails?.priceChange | number: '1.1-1' }}</div>
+            </div>
+        </div>
+        <div class="cc-coin-details__boxes">
+            <div class="cc-coin-details__shadow-box">
+                <div class="cc-coin-details__shadow-box__title">
+                    <i class="fa-solid fa-circle-dot cc-coin-details__shadow-box__color1"></i>
+                    <h6 class="cc-coin-details__shadow-box__name">Market Cap</h6>
+                </div>
+                <h4 class="cc-coin-details__shadow-box__value">{{currencySymbol}}{{ coinDetails?.marketCap }}</h4>
+            </div>
+            <div class="cc-coin-details__shadow-box">
+                <div class="cc-coin-details__shadow-box__title">
+                    <i class="fa-solid fa-circle-dot cc-coin-details__shadow-box__color2"></i>
+                    <h6 class="cc-coin-details__shadow-box__name">Volume</h6>
+                </div>
+                <h4 class="cc-coin-details__shadow-box__value">{{currencySymbol}}{{ coinDetails?.volume }}</h4>
+            </div>
+        </div>
+    </div>
+</div>

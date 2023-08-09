@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { CoinMarketData } from '../../models';
 
 @Component({
@@ -12,6 +13,8 @@ export class CoinsTableComponent implements OnInit {
   @Input() pageSize: number | null = 100;
   @Input() currency: string | null = 'usd';
   @Input() matchingList: boolean[] | null = [];
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
   }
@@ -27,5 +30,9 @@ export class CoinsTableComponent implements OnInit {
 
   addToFavorites(event: {id: string, remove: boolean}) {
     this.addedToFavorites.emit(event);
+  }
+
+  coinSelected(id: string) {
+    this.router.navigate(['/coins/'+id])
   }
 }
