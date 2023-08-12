@@ -22,7 +22,7 @@ export class DrawerComponent {
 
   changeCurrency(): void {
 
-    this.elementDisplay = this.elementDisplay === 'none' ? 'inline': 'none';
+    this.elementDisplay = this.elementDisplay === 'none' ? 'block': 'none';
 
     this.buttonColor = this.buttonColor === 'white'? '#EFEFEF' : 'white';
 

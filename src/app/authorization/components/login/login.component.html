@@ -1,1 +1,67 @@
-<p>login works!</p>
+<form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+  <div class="cc-login-form" formGroupName="userData">
+    <div class="cc-login-form__form-group">
+      <label class="cc-login-form__label" for="email">Email</label>
+      <input
+        class="cc-login-form__form-control"
+        type="text"
+        id="email"
+        formControlName="email"
+        placeholder="Enter your password"
+        [class.cc-login-form__invalid]="
+        !signInForm.get('userData.email')?.valid &&
+        signInForm.get('userData.email')?.touched"
+        [class.cc-login-form__valid]="
+        signInForm.get('userData.email')?.valid &&
+        signInForm.get('userData.email')?.touched"
+
+      />
+      <div class="cc-login-form__placeholder">
+      <span class="cc-login-form__warning"
+        *ngIf="
+          !signInForm.get('userData.email')?.valid &&
+          signInForm.get('userData.email')?.touched
+        "
+        >
+        <span *ngIf="signInForm.get('userData.email')?.errors?.['required']">
+          This field is required!
+        </span>
+        <span *ngIf="signInForm.get('userData.email')?.errors?.['email']">
+          This is not a valid email format!
+        </span>
+      </span>
+      </div>
+    </div>
+    <div class="cc-login-form__form-group">
+      <label  class="cc-login-form__label" for="password">Password</label>
+      <input
+        class="cc-login-form__form-control"
+        type="password"
+        id="password"
+        formControlName="password"
+        placeholder="Enter your password"
+        placeholder="Enter your password"
+        [class.cc-login-form__invalid]="
+        !signInForm.get('userData.password')?.valid &&
+        signInForm.get('userData.password')?.touched"
+        [class.cc-login-form__valid]="
+        signInForm.get('userData.password')?.valid &&
+        signInForm.get('userData.password')?.touched"
+      />
+      <div class="cc-login-form__placeholder">
+        <span class="cc-login-form__warning"
+          *ngIf="
+            !signInForm.get('userData.password')?.valid &&
+            signInForm.get('userData.password')?.touched">
+        <span *ngIf="signInForm.get('userData.password')?.errors?.['required']">
+          This field is required!
+        </span>
+        </span>
+      
+      </div>
+    </div>
+    <div class="cc-login-form__button">
+      <button  class="cc-login-form__submit" type="submit">Submit</button>
+    </div>
+  </div>
+</form>

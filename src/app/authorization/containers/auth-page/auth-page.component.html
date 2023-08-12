@@ -1,13 +1,13 @@
-<section class="cc-auth-page">
-    <aside class="cc-top">
-        <div class="cc-top__signin">
-            Sign In
-        </div>
-        <div class="cc-top__signup">
-            Sign Up
-        </div>
-    </aside>
-    <aside class="bottom">
-        
-    </aside>
-</section>
+<div class="cc-auth">
+    <div class="cc-auth__container">
+        <aside class="cc-auth__top">
+            <div class="cc-auth__top__title">{{title}}</div>
+        </aside>
+        <aside class="cc-auth__center">
+            <cc-login *ngIf="registered" (login)="login($event)">sign In</cc-login>
+            <cc-signup *ngIf="!registered" (signUp)="signUp($event)">sign up</cc-signup>
+
+        </aside>
+        <div class="cc-auth__bottom" (click)="changeComponent()">{{link}}</div>
+    </div>
+</div>

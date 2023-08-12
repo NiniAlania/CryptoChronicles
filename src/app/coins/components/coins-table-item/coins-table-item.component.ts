@@ -20,9 +20,11 @@ export class CoinsTableItemComponent implements OnChanges {
     this.isColored = this.match;
   }
 
-  addToFavorites() {
+  addToFavorites(event: Event) {
     this.isColored = !this.isColored;
     this.addedToFavorites.emit();
+
+    event.stopImmediatePropagation();
   }
 
   get currencySymbol() {

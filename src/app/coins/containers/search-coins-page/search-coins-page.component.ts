@@ -1,5 +1,6 @@
 import { transition, trigger, query, style, stagger, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { SearchPageActions } from '../../actions';
@@ -30,7 +31,7 @@ export class SearchCoinsPageComponent implements OnInit {
   searchResult$: Observable<SearchedCoin[]>;
 
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
     this.searchResult$ = store.select(fromCoins.selectSearchResult)
   }
 
@@ -46,5 +47,9 @@ export class SearchCoinsPageComponent implements OnInit {
       console.log(searchWord);
       this.store.dispatch(SearchPageActions.search({text: searchWord}));
     }
+  }
+
+  coinSelected(id: string) {
+    this.router.navigate(['/coins/'+id])
   }
 }

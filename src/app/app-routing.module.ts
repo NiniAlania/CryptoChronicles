@@ -9,6 +9,11 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./coins/coins.module').then((m) => m.CoinsModule),
   },
+  {
+    path:'auth',
+    loadChildren: () =>
+      import('./authorization/auth.module').then((m) => m.AuthModule)
+  },
   
   {
     path: '**',

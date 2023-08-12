@@ -1,1 +1,179 @@
-<p>signup works!</p>
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <div class="cc-signup-form" formGroupName="userData">
+    <div class="cc-signup-form__form-group">
+      <label class="cc-signup-form__label"  for="firstName">First Name</label>
+      <input
+        class="cc-signup-form__form-control" 
+        type="text"
+        id="firstName"
+        formControlName="firstName"
+        placeholder="Enter your name"
+        [class.cc-signup-form__invalid]="
+        !signUpForm.get('userData.firstName')?.valid &&
+        signUpForm.get('userData.firstName')?.touched"
+        [class.cc-signup-form__valid]="
+        signUpForm.get('userData.firstName')?.valid &&
+        signUpForm.get('userData.firstName')?.touched"
+        />
+      <div  class="cc-signup-form__placeholder">
+        <span
+        class="cc-signup-form__warning"
+        *ngIf="
+          !signUpForm.get('userData.firstName')?.valid &&
+          signUpForm.get('userData.firstName')?.touched
+        "
+         >
+          <span
+          class="cc-signup-form__warning"
+          *ngIf="signUpForm.get('userData.firstName')?.errors?.['required']"
+         >
+          This field is required!
+          </span>
+       </span>
+      </div>
+    </div>
+    <div class="cc-signup-form__form-group">
+      <label  class="cc-signup-form__label"  for="lastName">Last Name</label>
+      <input
+        class="cc-signup-form__form-control" 
+        type="text"
+        id="lastName"
+        formControlName="lastName"
+        placeholder="Enter your lastname"
+        [class.cc-signup-form__invalid]="
+        !signUpForm.get('userData.lastName')?.valid &&
+        signUpForm.get('userData.lastName')?.touched"
+        [class.cc-signup-form__valid]="
+        signUpForm.get('userData.lastName')?.valid &&
+        signUpForm.get('userData.lastName')?.touched"
+      />
+      <div class="cc-signup-form__placeholder">
+        <span
+        class="cc-signup-form__warning"
+        *ngIf="
+          !signUpForm.get('userData.lastName')?.valid &&
+          signUpForm.get('userData.lastName')?.touched
+        "
+       >
+        <span *ngIf="signUpForm.get('userData.lastName')?.errors?.['required']">
+          This field is required!
+        </span>
+        </span>
+      </div>
+    </div>
+    <div class="cc-signup-form__form-group">
+      <label  class="cc-signup-form__label"  for="email">Email</label>
+      <input
+        class="cc-signup-form__form-control" 
+        type="text"
+        id="email"
+        formControlName="email"
+        placeholder="Enter your email"
+        [class.cc-signup-form__invalid]="
+        !signUpForm.get('userData.email')?.valid &&
+        signUpForm.get('userData.email')?.touched"
+        [class.cc-signup-form__valid]="
+        signUpForm.get('userData.email')?.valid &&
+        signUpForm.get('userData.email')?.touched"
+      />
+      <div class="cc-signup-form__placeholder">
+        <span class="cc-signup-form__warning"
+          *ngIf="
+            !signUpForm.get('userData.email')?.valid &&
+            signUpForm.get('userData.email')?.touched
+          ">
+          <span *ngIf="signUpForm.get('userData.email')?.errors?.['required']">
+            This field is required!   
+          </span>
+          <span *ngIf="signUpForm.get('userData.email')?.errors?.['email']">
+            This is not a valid email format!
+          </span>
+          <span *ngIf="signUpForm.get('userData.email')?.errors?.['emailIsForbidden']">
+            This email is forbidden!
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="cc-signup-form__form-group">
+      <label  class="cc-signup-form__label"  for="password">Password</label>
+      <input
+        class="cc-signup-form__form-control" 
+        type="password"
+        id="password"
+        formControlName="password"
+        [class.cc-signup-form__invalid]="
+        !signUpForm.get('userData.password')?.valid &&
+        signUpForm.get('userData.password')?.touched"
+        [class.cc-signup-form__valid]="
+        signUpForm.get('userData.password')?.valid &&
+        signUpForm.get('userData.password')?.touched"
+      />
+      <div class="cc-signup-form__placeholder">
+        <span class="cc-signup-form__warning"
+          *ngIf="
+            !signUpForm.get('userData.password')?.valid &&
+            signUpForm.get('userData.password')?.touched
+          ">
+          <span *ngIf="signUpForm.get('userData.password')?.errors?.['required']">
+            This field is required|
+          </span>
+          <span *ngIf="
+            signUpForm.get('userData.password')?.errors?.['minLength'] || 
+            signUpForm.get('userData.password')?.errors?.['weakPassword']">
+            Password should have min length 6, at least 1 uppercase, special character!
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="cc-signup-form__form-group">
+      <label  class="cc-signup-form__label"  for="confirmPassword">Confirm Password</label>
+      <input
+        class="cc-signup-form__form-control" 
+        type="password"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+        [class.cc-signup-form__invalid]="
+        !signUpForm.get('userData.confirmPassword')?.valid &&
+        signUpForm.get('userData.confirmPassword')?.touched"
+        [class.cc-signup-form__valid]="
+        signUpForm.get('userData.confirmPassword')?.valid &&
+        signUpForm.get('userData.confirmPassword')?.touched"
+      />
+      <div class="cc-signup-form__placeholder">
+        <span
+        class="cc-signup-form__warning"
+        *ngIf="signUpForm.get('userData')?.errors?.['passwordMismatch'] && signUpForm.get('userData.confirmPassword')?.touched">
+        Passwords do not match!
+       </span>
+      </div>
+    </div>
+    <div class="cc-signup-form__form-group">
+      <label  class="cc-signup-form__label"  for="file">Profile Picture</label>
+      <input
+      class="cc-signup-form__form-file" 
+        formControlName="file"
+        id="file"
+        type="file"
+        (change)="onFileChange($event)"
+        [class.cc-signup-form__invalid]="
+        !signUpForm.get('userData.file')?.valid &&
+        signUpForm.get('userData.file')?.touched"
+        [class.cc-signup-form__valid]="
+        signUpForm.get('userData.file')?.valid &&
+        signUpForm.get('userData.file')?.touched"/>
+      <div class="cc-signup-form__placeholder">
+        <span
+        class="cc-signup-form__warning"
+        *ngIf="
+          signUpForm.get('userData.file')?.touched &&
+          signUpForm.get('userData.file')?.invalid">
+        <span class="cc-signup-form_warning" *ngIf="signUpForm.get('userData.file')?.errors?.['required']"
+          >File is required.</span>
+       </span>
+      </div>
+    </div>
+    <div class="cc-signup-form__button">
+      <button class="cc-signup-form__submit" type="submit">Submit</button>
+    </div>
+  </div>
+</form>

@@ -1,6 +1,6 @@
 <div class="cc-search-coin">
     <input class="cc-search-coin__input" type="text" (keyup)="searchCoin($event)" placeholder="Find Your Coin Here...">
-    <nav class="cc-search-coin__nav"  *ngFor="let coin of searchResult$ | async;  let i = index">
+    <nav class="cc-search-coin__nav" (click)="coinSelected(coin.id)"  *ngFor="let coin of searchResult$ | async;  let i = index">
        <div class="cc-search-coin__for-nav" [@listAnimation]="(searchResult$ | async)?.length">
             <img src="{{coin.thumb}}" alt="">
             <li class="cc-search-coin__for-nav__li">{{coin.name}}</li>
