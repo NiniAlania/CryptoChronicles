@@ -1,5 +1,5 @@
 <section class="cc-table-item" [ngStyle]="{ 'background-color': index % 2 !== 0 ? 'transparent' : 'shared.$table-color' }">
-        <div class="cc-table-item__star-sign"><i (click)="addToFavorites()" [ngClass]="{ 'cc-favorites': isColored }" class="fa-regular fa-star cc-table-item__star"></i></div>
+        <div class="cc-table-item__star-sign"><i (click)="addToFavorites($event)" [ngClass]="{ 'cc-favorites': isColored }" class="fa-regular fa-star cc-table-item__star"></i></div>
         <div class="cc-table-item__number">{{ index }}</div>
         <div class="cc-table-item__coin"> 
             <img class="cc-table-item__coin__logo" src="{{coin?.image}}" alt="">        

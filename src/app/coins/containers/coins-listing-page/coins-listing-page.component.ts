@@ -20,6 +20,9 @@ export class CoinsListingPageComponent implements OnInit {
   currency$: Observable<string>;
   totalCoins$: Observable<number>;
   matchingList$!: Observable<boolean[]>;
+  loading$!: Observable<boolean>;
+  error$: Observable<boolean>;
+
 
   
   constructor(private store: Store, private router: Router) { 
@@ -29,6 +32,8 @@ export class CoinsListingPageComponent implements OnInit {
     this.currency$ = this.store.select(fromRoot.selectCurrency);
     this.totalCoins$ = this.store.select(fromCoins.selectCoinListTotal);
     this.matchingList$ = this.store.select(fromCoins.selectIsFavorite);
+    this.loading$ = this.store.select(fromCoins.selectCoinsAndListLoading);
+    this.error$ = this.store.select(fromCoins.selectCoinsAndListError);
   }
   
   ngOnInit() {

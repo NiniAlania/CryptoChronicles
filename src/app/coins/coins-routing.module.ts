@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CoinsListingPageComponent, FavoriteCoinsListingPageComponent, SearchCoinsPageComponent } from "./containers";
 import { CoinPageComponent } from "./containers/coin-page/coin-page.component";
+import { AuthGuard } from "../authorization/services/auth-guard.service";
 
 const routes: Routes = [
     {
@@ -12,6 +13,7 @@ const routes: Routes = [
     {
         path: 'favorites',
         component: FavoriteCoinsListingPageComponent,
+        canActivate: [AuthGuard],
         data: { title: 'Favorite Coins Listing' },
     },
     {

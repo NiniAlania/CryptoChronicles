@@ -18,6 +18,8 @@ export class CoinPageComponent implements OnInit {
   coinPrices$: Observable<CoinPrice[]>;
   coinInfo$: Observable<CoinInfo | null>;
   currency$: Observable<string>;
+  error$: Observable<boolean>;
+  loading$: Observable<boolean>;
 
   constructor(
     private store: Store,
@@ -27,6 +29,8 @@ export class CoinPageComponent implements OnInit {
     this.coinPrices$ = this.store.select(fromCoins.selectCoinPrices);
     this.coinInfo$ =this.store.select(fromCoins.selectCoinInfo);
     this.currency$ = this.store.select(fromRoot.selectCurrency);
+    this.error$ = this.store.select(fromCoins.selectCoinError);
+    this.loading$ = this.store.select(fromCoins.selectCoinLoading);
   }
 
   ngOnInit() {
@@ -36,6 +40,4 @@ export class CoinPageComponent implements OnInit {
   back() {
     this.location.back();
   }
-
-
 }

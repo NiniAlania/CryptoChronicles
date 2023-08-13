@@ -10,6 +10,10 @@ export const loadFavoritesSuccess = createAction(
     props<{data: CoinMarketData[]}>()
 );
 
+export const loadFavoritesFail = createAction(
+    '[Coins/API] Load Favorites Fail'
+);
+
 
 export const pageSizeChanged = createAction(
     '[Favorites Listing Page] Page Size Changed',

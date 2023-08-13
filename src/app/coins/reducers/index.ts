@@ -7,6 +7,7 @@ import * as fromSearch from './search.reducer';
 import * as fromCoin from './coin.reducer';
 
 import { Action, combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
+import { state } from '@angular/animations';
 
 export const coinsFeatureKey = 'coins';
 
@@ -68,6 +69,16 @@ export const selectIsFavorite = createSelector(
     (state) => state.isFavorite
 )
 
+export const selectCoinsLoading = createSelector(
+    selectCoinsEntitiesState,
+    (state) => state.loading
+)
+
+export const selectCoinsError = createSelector(
+    selectCoinsEntitiesState,
+    (state) => state.error
+)
+
 export const {
     selectIds: selectCoinListIds,
     selectEntities: SelectCoinListEntities,
@@ -76,6 +87,28 @@ export const {
 } = fromCoinsList.adapter.getSelectors(selectCoinsListEntitiesState);
 
 
+export const selectCoinsListLoading = createSelector(
+    selectCoinsListEntitiesState,
+    (state) => state.loading
+)
+
+export const selectCoinsListError = createSelector(
+    selectCoinsListEntitiesState,
+    (state) => state.error
+)
+
+export const selectCoinsAndListLoading = createSelector(
+    selectCoinsLoading,
+    selectCoinsListLoading,
+    (coinsLoading, listLoading) => coinsLoading && listLoading
+)
+
+export const selectCoinsAndListError = createSelector(
+    selectCoinsError,
+    selectCoinsListError,
+    (coinsError, listError) => coinsError || listError
+)
+
 export const {
     selectIds: selectFavoritesIds,
     selectEntities: selectFavoritesEntities,
@@ -83,6 +116,15 @@ export const {
     selectAll: selecctAllFavorites
 } = fromFavorites.adapter.getSelectors(selectFavoritesEntitiesState);
 
+export const selectFavoritesLoading = createSelector(
+    selectFavoritesEntitiesState,
+    (state) => state.loading
+);
+
+export const selectFavoritesError = createSelector(
+    selectFavoritesEntitiesState,
+    (state) => state.error
+);
 
 export const selectPageSize = createSelector(
     selectPageEntitiesState,
@@ -97,6 +139,16 @@ export const selectSearch = createSelector(
 export const selectSearchResult = createSelector(
     selectSearch,
     (state) => state.searchResults
+)
+
+export const selectSearchLoading = createSelector(
+    selectSearch,
+    (state) => state.loading
+)
+
+export const selectSearchError = createSelector(
+    selectSearch,
+    (state) => state.error
 )
 
 export const selectCoinState = createSelector(
@@ -117,4 +169,14 @@ export const selectCoinPrices = createSelector(
 export const selectCoinInfo = createSelector(
     selectCoinState,
     (state) => state.coinInfo
+)
+
+export const selectCoinLoading = createSelector(
+    selectCoinState,
+    (state) => state.loadingDetails && state.loadingInfo && state.loadingPrices
+)
+
+export const selectCoinError = createSelector(
+    selectCoinState,
+    (state) => state.error
 )

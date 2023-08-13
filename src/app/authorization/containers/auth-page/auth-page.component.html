@@ -1,13 +1,17 @@
-<section class="cc-auth-page">
-    <aside class="cc-top">
-        <div class="cc-top__signin">
-            Sign In
-        </div>
-        <div class="cc-top__signup">
-            Sign Up
-        </div>
-    </aside>
-    <aside class="bottom">
-        
-    </aside>
-</section>
+<div class="cc-auth">
+    <cc-alert [message]="error" *ngIf="error$ | async as error" (close)="onHandleError()"></cc-alert>
+    <div *ngIf="loading$ | async">
+        <cc-spinner></cc-spinner>
+    </div>
+    <div class="cc-auth__container" *ngIf="!(loading$ | async)">
+        <aside class="cc-auth__top">
+            <div class="cc-auth__top__title">{{title}}</div>
+        </aside>
+        <aside class="cc-auth__center">
+            <cc-login *ngIf="registered" (login)="login($event)">sign In</cc-login>
+            <cc-signup *ngIf="!registered" (signUp)="signUp($event)">sign up</cc-signup>
+
+        </aside>
+        <div class="cc-auth__bottom" (click)="changeComponent()">{{link}}</div>
+    </div>
+</div>

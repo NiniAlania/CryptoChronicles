@@ -6,6 +6,10 @@ export const searchSuccess = createAction(
     props<{data: SearchedCoin[]}>()
 )
 
+export const searchFail = createAction(
+    '[Search Page] SearchFail'
+)
+
 export const search = createAction(
     '[Search Page] Search',
     props<{text: string}>()
@@ -13,4 +17,8 @@ export const search = createAction(
 
 export const enter = createAction(
     '[Search Page] Enter'
+)
+
+export const clear = createAction(
+    '[Search Page] Clear'
 )

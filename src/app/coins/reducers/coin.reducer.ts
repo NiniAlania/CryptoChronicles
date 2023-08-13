@@ -9,19 +9,64 @@ export interface State {
     coinDetails: CoinDetails | null
     coinPrices: CoinPrice[]
     coinInfo: CoinInfo | null
+    loadingDetails: boolean
+    loadingPrices: boolean
+    loadingInfo: boolean
+    error: boolean
 }
 
 export const initialState: State = {
     coinDetails: null,
     coinPrices: [],
-    coinInfo: null
+    coinInfo: null,
+    loadingDetails: false,
+    loadingPrices: false,
+    loadingInfo: false,
+    error: false 
 }
 
 export const reducer = createReducer(
     initialState,
-    on(CoinPageActions.loadCoinDetailsSuccess, (state, {data}) => ({...state, coinDetails: data})),
-    on(CoinPageActions.loadCoinPricesSuccess, (state, {data}) => ({...state, coinPrices: data})),
-    on(CoinPageActions.loadCoinInfoSuccess, (state, {data}) => ({...state, coinInfo: data}) )
+    on(
+        CoinPageActions.loadCoinDetailsSuccess, 
+        (state, {data}) => ({
+            ...state, 
+            coinDetails: data,
+            loadingDetails: false,
+        })
+    ),
+    on(
+        CoinPageActions.loadCoinPricesSuccess, 
+        (state, {data}) => ({
+            ...state, 
+            coinPrices: data,
+            loadingPrices: false,
+        })
+    ),
+    on(
+        CoinPageActions.loadCoinInfoSuccess, 
+        (state, {data}) => ({
+            ...state, 
+            coinInfo: data,
+            loadingInfo: false,
+        }) 
+    ),
+    on(
+        CoinPageActions.loadCoinDetailsFail,
+        CoinPageActions.loadCoinInfoFail,
+        CoinPageActions.loadCoinPricesFail,
+        (state) => ({
+            ...state,
+            error: true,
+        })
+    ),
+    on(CoinPageActions.enter, (state) => ({
+        ...state, 
+        error: false, 
+        loadingDetails: true,
+        loadingInfo: true,
+        loadingPrices: true
+    }))
 )
 
 
