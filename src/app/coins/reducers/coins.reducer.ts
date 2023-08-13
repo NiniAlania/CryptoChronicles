@@ -2,12 +2,15 @@ import { EntityAdapter, EntityState, createEntityAdapter } from "@ngrx/entity";
 import { CoinMarketData } from "../models";
 import { createReducer, on } from "@ngrx/store";
 import { CoinsListingPageActions } from "../actions";
+import { DrawerActions } from "src/app/core/actions";
+import { routerNavigatedAction } from "@ngrx/router-store";
 
 export const coinsFeatureKey = 'coins';
 
 export interface State extends EntityState<CoinMarketData> {
     isFavorite: boolean[];
-
+    loading: boolean;
+    error: boolean;
 }
 
 export const adapter: EntityAdapter<CoinMarketData> = createEntityAdapter<CoinMarketData>({
@@ -16,7 +19,9 @@ export const adapter: EntityAdapter<CoinMarketData> = createEntityAdapter<CoinMa
 });
 
 export const initialState: State = adapter.getInitialState({ 
-    isFavorite: []
+    isFavorite: [],
+    loading: false,
+    error: false
 });
 
 export const reducer = createReducer(
@@ -24,7 +29,27 @@ export const reducer = createReducer(
     on(CoinsListingPageActions.loadCoinMarketsSuccess, (state, { data, isFavorite }) => {
         return {
             ...adapter.setAll(data, state),
-            isFavorite
+            isFavorite,
+            loading: false
         }
-    })
+    }),
+    on(
+        CoinsListingPageActions.loadCoinMarketsFail, 
+        (state) => ({
+            ...adapter.setAll([], state),
+            isFavorite: [],
+            error: true
+        })
+    ),
+    on(
+        CoinsListingPageActions.enter, 
+        DrawerActions.changeCurrency, 
+        routerNavigatedAction, 
+        CoinsListingPageActions.pageSizeChanged,
+        (state) => ({
+            ...state,
+            loading: true,
+            error: false
+        })
+    )
 )

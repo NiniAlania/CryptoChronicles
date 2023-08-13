@@ -20,7 +20,9 @@ export class FavoriteCoinsListingPageComponent implements OnInit {
   pageSize$: Observable<number>;
   currency$: Observable<string>;
   totalCoins$:Observable<number>;
-  matchingList: boolean[] = []
+  matchingList: boolean[] = [];
+  loading$: Observable<boolean>;
+  error$: Observable<boolean>;
 
   constructor(private store: Store, private router: Router){
     this.favoriteCoins$ = this.store.select(fromCoins.selecctAllFavorites);
@@ -28,6 +30,8 @@ export class FavoriteCoinsListingPageComponent implements OnInit {
     this.pageSize$ = this.store.select(fromCoins.selectPageSize);
     this.currency$ = this.store.select(fromRoot.selectCurrency);
     this.totalCoins$ = this.store.select(fromCoins.selectFavoritesTotal);
+    this.loading$ = this.store.select(fromCoins.selectFavoritesLoading);
+    this.error$ = this.store.select(fromCoins.selectFavoritesError);
   }
 
   ngOnInit() {

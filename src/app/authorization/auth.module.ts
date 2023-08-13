@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './effects';
 import { StoreModule } from '@ngrx/store';
 import * as fromAuth from './reducers';
+import { SharedModule } from '../shared/shared.module';
 
 
 export const COMPONENTS = [
@@ -27,7 +28,8 @@ export const CONTAINERS = [
     AuthRoutingModule,
     ReactiveFormsModule,
     EffectsModule.forFeature(AuthEffects),
-    StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducers)
+    StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducers),
+    SharedModule
   ]
 })
 export class AuthModule { }

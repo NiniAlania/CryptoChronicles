@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, concatLatestFrom, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { map, of, switchMap } from "rxjs";
+import { catchError, map, of, switchMap } from "rxjs";
 import { DrawerActions } from "src/app/core/actions";
 import { selectCurrency, selectId } from "src/app/reducers";
 import { CoinPageActions } from "../actions";
@@ -35,7 +35,10 @@ export class CoinEffects {
                 const filter = defaultCoinDetailFilter(id, currency);
                 return this.coinGeckoService.getCoinDetails(filter).pipe(
                     map((data) => {
-                        return CoinPageActions.loadCoinDetailsSuccess({data})
+                        return CoinPageActions.loadCoinDetailsSuccess({data});
+                    }),
+                    catchError(() => {
+                        return of(CoinPageActions.loadCoinDetailsFail());
                     })
                 );
             })
@@ -56,6 +59,9 @@ export class CoinEffects {
                 return this.coinGeckoService.getCoinChart(filter).pipe(
                     map((data) => {
                         return CoinPageActions.loadCoinPricesSuccess({data});
+                    }),
+                    catchError(() => {
+                        return of(CoinPageActions.loadCoinPricesFail());
                     })
                 );
             })
@@ -74,6 +80,9 @@ export class CoinEffects {
                 return this.coinGeckoService.getCoinInfo(id).pipe(
                     map((data) => {
                         return CoinPageActions.loadCoinInfoSuccess({data});
+                    }),
+                    catchError(() => {
+                        return of(CoinPageActions.loadCoinInfoFail());
                     })
                 )
             })

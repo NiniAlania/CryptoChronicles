@@ -1,26 +1,34 @@
 import { Injectable } from "@angular/core";
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, user, signOut } from "@angular/fire/auth";
 import { LoginData, SignUpData, User } from "../models";
-import { Observable, from, map, mergeMap, of, switchMap } from "rxjs";
+import { Observable, from, map, mergeMap, of, switchMap, take, tap } from "rxjs";
 import { Firestore, doc, docData, setDoc } from "@angular/fire/firestore";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    constructor(private auth: Auth, private firestore: Firestore) {}
+    constructor(
+        private auth: Auth, 
+        private firestore: Firestore
+    ) {}
 
     login({email, password}: LoginData): Observable<User | null> {
         return from(signInWithEmailAndPassword(this.auth, email, password)).pipe(
+            take(1),
             mergeMap((userCredential) => {
                 if (userCredential.user) {
                     const docRef = doc(this.firestore, `users/${userCredential.user.uid}`);
                     return docData(docRef).pipe(
+                        take(1),
                         map((data) => {
-                            return {
+                            const user = {
                                 uid: userCredential.user.uid,
                                 ...data
-                            } as User
+                            } as User;
+                            console.log('zoro');
+                            localStorage.setItem('user', JSON.stringify(user));
+                            return user;
                         }) 
                     );
                 } else {
@@ -32,8 +40,8 @@ export class AuthService {
 
     register(data: SignUpData): Observable<User | null> {
         return from(createUserWithEmailAndPassword(this.auth, data.email, data.password)).pipe(
+            take(1),
             mergeMap((userCredential) => {
-                console.log(userCredential)
                 if (userCredential.user) {
                     const docRef = doc(this.firestore, `users/${userCredential.user.uid}`);
                     return from(setDoc(docRef, { 
@@ -43,15 +51,18 @@ export class AuthService {
                         profilePicture: data.profilePicture,
                         role: 'user' 
                     })).pipe(
+                        take(1),
                         map(() => {
-                            return {
+                            const user = {
                                 uid: userCredential.user.uid,
                                 firstName: data.firstName,
                                 lastName: data.lastName,
                                 email: data.email,
                                 profilePicture: data.profilePicture,
                                 role: 'user'
-                            } as User
+                            } as User;
+                            localStorage.setItem('user', JSON.stringify(user));
+                            return user;
                         })
                     );
                 } else {
@@ -62,10 +73,16 @@ export class AuthService {
     }
 
     logout() {
-        return from(signOut(this.auth));
+        signOut(this.auth);
+        localStorage.removeItem('user');  
     }
 
-    getUser() {
-        return user(this.auth);
+    getUser(): Observable<User | null> {
+        const user = localStorage.getItem('user');
+        if (user) {
+            return of(JSON.parse(user));
+        } else {
+            return of(null);
+        }
     }
 }

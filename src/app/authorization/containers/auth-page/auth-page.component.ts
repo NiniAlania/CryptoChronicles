@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthPageActions } from '../../actions';
 import { LoginData, SignUpData, User } from '../../models';
-import { selectUser } from '../../reducers';
-import { AuthService } from '../../services';
+import { selectError, selectLoading, selectUser } from '../../reducers';
 
 @Component({
   selector: 'cc-auth-page',
@@ -15,10 +14,14 @@ export class AuthPageComponent implements OnInit {
   title: string = 'Sign In';
   link: string = 'Not Registered? Sign Up Here';
   registered: boolean = true;
-  user$: Observable<User | null>;
+  loading$: Observable<boolean | null>
+  error$: Observable<string | null>
 
-  constructor(private store: Store) {
-    this.user$= this.store.select(selectUser)
+  constructor(
+    private store: Store
+  ) {
+    this.loading$ = this.store.select(selectLoading);
+    this.error$ = this.store.select(selectError);
   }
 
   changeComponent() {
@@ -41,7 +44,10 @@ export class AuthPageComponent implements OnInit {
     this.store.dispatch(AuthPageActions.logIn({data: loginData}))
   }
 
+  onHandleError() {
+    this.store.dispatch(AuthPageActions.clearError());
+  }
+
   ngOnInit(): void {
-     this.user$.subscribe((user) => console.log(user))
   }
 }

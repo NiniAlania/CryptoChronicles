@@ -7,10 +7,18 @@ export const loadCoinMarketsSuccess = createAction(
     props<{ data: CoinMarketData[], isFavorite: boolean[] }>()
 );
 
+export const loadCoinMarketsFail = createAction(
+    '[Coins/API] Load Coin Markets Fail'
+)
+
 export const loadCoinListSuccess = createAction(
     '[Coins/API] Load Coin List Sucess',
     props<{data: Coin[]}>()
 );
+
+export const loadCoinListFail = createAction(
+    '[Coins/API] Load Coin List Fail'
+)
 
 
 export const enter = createAction(

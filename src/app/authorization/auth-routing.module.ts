@@ -6,7 +6,7 @@ import { AuthPageComponent } from './containers/auth-page/auth-page.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     component: AuthPageComponent,
     data: { title: 'Authorization'}
   }

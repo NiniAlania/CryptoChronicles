@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,10 +17,13 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AuthModule } from './authorization/auth.module';
 
 @NgModule({
   imports: [
     BrowserModule,
+    AuthModule,
     AppRoutingModule,
     CoreModule,
     NgxPaginationModule,
@@ -29,6 +32,10 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot(RouterEffects),
+    StoreDevtoolsModule.instrument({
+      name: 'Crypto Chronicles DevTools',
+      logOnly: !isDevMode(),
+    }),
     BrowserAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

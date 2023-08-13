@@ -1,5 +1,9 @@
 <div class="cc-auth">
-    <div class="cc-auth__container">
+    <cc-alert [message]="error" *ngIf="error$ | async as error" (close)="onHandleError()"></cc-alert>
+    <div *ngIf="loading$ | async">
+        <cc-spinner></cc-spinner>
+    </div>
+    <div class="cc-auth__container" *ngIf="!(loading$ | async)">
         <aside class="cc-auth__top">
             <div class="cc-auth__top__title">{{title}}</div>
         </aside>

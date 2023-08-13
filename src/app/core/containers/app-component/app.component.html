@@ -1,9 +1,11 @@
 <div class="cc-main-container">
     <cc-drawer class="cc-main-container__drawer"
-    (currentCurrency)="currencyChanged($event)"></cc-drawer>
+    (currentCurrency)="currencyChanged($event)" [user]="user$ | async" (logout)="logout()"></cc-drawer>
     <div class="cc-main-container__main-content">
         <cc-header></cc-header>
-        <router-outlet></router-outlet>
+        <div class="cc-main-container__main-content__middle">  
+            <router-outlet></router-outlet>
+        </div>
         <cc-footer class="cc-main-container__footer"></cc-footer>
     </div>
     

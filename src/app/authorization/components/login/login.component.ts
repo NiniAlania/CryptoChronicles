@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     if (this.signInForm.valid) {
       const userData = this.signInForm.value.userData;
       this.login.emit(userData);
+      this.signInForm.reset();
     }
   }
 }

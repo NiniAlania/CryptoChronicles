@@ -11,28 +11,18 @@ import * as fromCoins from '../../reducers'
 @Component({
   selector: 'cc-search-coins-page',
   templateUrl: './search-coins-page.component.html',
-  styleUrls: ['./search-coins-page.component.scss'],
-  animations: [
-    trigger('listAnimation', [
-      transition('* <=> *', [
-        query(':enter',
-          [style({ opacity: 0 }), stagger('60ms', animate('600ms ease-out', style({ opacity: 1 })))],
-          { optional: true }
-        ),
-        query(':leave',
-          animate('200ms', style({ opacity: 0 })),
-          { optional: true }
-        )
-      ])
-    ])
-  ],  
+  styleUrls: ['./search-coins-page.component.scss']
 })
 export class SearchCoinsPageComponent implements OnInit {
   searchResult$: Observable<SearchedCoin[]>;
+  loading$: Observable<boolean>;
+  error$: Observable<boolean>;
 
 
   constructor(private store: Store, private router: Router) {
-    this.searchResult$ = store.select(fromCoins.selectSearchResult)
+    this.searchResult$ = store.select(fromCoins.selectSearchResult);
+    this.loading$ = store.select(fromCoins.selectSearchLoading);
+    this.error$ = store.select(fromCoins.selectSearchError);
   }
 
   ngOnInit(): void {
@@ -40,12 +30,12 @@ export class SearchCoinsPageComponent implements OnInit {
   }
 
   searchCoin(event: Event) {
-
     const searchWord = (event.target as HTMLInputElement).value;
     
     if (searchWord.length > 0) {
-      console.log(searchWord);
       this.store.dispatch(SearchPageActions.search({text: searchWord}));
+    } else {
+      this.store.dispatch(SearchPageActions.clear());
     }
   }
 

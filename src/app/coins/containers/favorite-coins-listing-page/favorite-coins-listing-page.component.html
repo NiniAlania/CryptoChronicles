@@ -1,25 +1,35 @@
-<ng-container
-*ngIf="{
-    favoriteCoins: (favoriteCoins$ | async),
-    page: (page$ | async),
-    pageSize: (pageSize$ | async),
-    currency: (currency$ | async),
-    totalCoins: (totalCoins$ | async)
-} as data">
-    <cc-dropdown 
-    [current]="data.pageSize"
-     (pageSizeChanged)="changePageSize($event)"></cc-dropdown>
-    <cc-coin-table
-    [coins]="data.favoriteCoins"
-    [page]="data.page" 
-    [pageSize]="data.pageSize" 
-    [currency]="data.currency" 
-    (addedToFavorites)="removeFromFavorites($event)"
-    [matchingList]="matchingList"
-    ></cc-coin-table>
-    <cc-paginator
-    [pageSize]="data.pageSize"
-    [pageNumber]="data.page ? data.page - 1 : null"
-    [collectionSize]="data.totalCoins" 
-    (pageChanged)="changePage($event)"></cc-paginator>
+<div *ngIf="error$ | async">
+    <cc-no-data></cc-no-data>
+</div>
+<ng-container *ngIf="!(error$ | async)">
+    <div *ngIf="loading$ | async">
+        <cc-spinner></cc-spinner>
+    </div>
+    <ng-container *ngIf="!(loading$ | async)">
+        <ng-container
+        *ngIf="{
+            favoriteCoins: (favoriteCoins$ | async),
+            page: (page$ | async),
+            pageSize: (pageSize$ | async),
+            currency: (currency$ | async),
+            totalCoins: (totalCoins$ | async)
+        } as data">
+            <cc-dropdown 
+            [current]="data.pageSize"
+            (pageSizeChanged)="changePageSize($event)"></cc-dropdown>
+            <cc-coin-table
+            [coins]="data.favoriteCoins"
+            [page]="data.page" 
+            [pageSize]="data.pageSize" 
+            [currency]="data.currency" 
+            (addedToFavorites)="removeFromFavorites($event)"
+            [matchingList]="matchingList"
+            ></cc-coin-table>
+            <cc-paginator
+            [pageSize]="data.pageSize"
+            [pageNumber]="data.page ? data.page - 1 : null"
+            [collectionSize]="data.totalCoins" 
+            (pageChanged)="changePage($event)"></cc-paginator>
+        </ng-container>
+    </ng-container>
 </ng-container>

@@ -43,9 +43,14 @@
             </div>
         </div>
         <div class="cc-drawer__authorization">
-            <div class="cc-drawer__authorization__sign">
+            <div class="cc-drawer__authorization__sign" *ngIf="!user">
                 <button class="cc-drawer__authorization__button" routerLink="/auth">
                     Sign In
+                </button>
+            </div>
+            <div class="cc-drawer__authorization__sign" *ngIf="user">
+                <button class="cc-drawer__authorization__button" (click)="logOut()">
+                    Sign Out
                 </button>
             </div>
        </div>

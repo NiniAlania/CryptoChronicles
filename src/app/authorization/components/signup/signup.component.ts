@@ -93,6 +93,7 @@ export class SignupComponent implements OnInit {
           profilePicture: reader.result as string,
         };
         this.signUp.emit(signUpData);
+        this.signUpForm.reset();
       };
     }
   }

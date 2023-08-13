@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { emit } from 'process';
+import { User } from 'src/app/authorization/models';
 
 @Component({
   selector: 'cc-drawer',
@@ -16,7 +17,10 @@ export class DrawerComponent {
   currency: string = 'USD';
   logo: string = '../../../assets/usd.png';
 
+  @Input() user: User | null = null;
+
   @Output('currentCurrency') currentCurrency = new EventEmitter<'usd' | 'eur'>();
+  @Output('logout') logout = new EventEmitter<void>();
 
   constructor() {}
 
@@ -47,5 +51,9 @@ export class DrawerComponent {
 
   }
 
+  logOut() {
+    this.logout.emit();
+    this.user = null;
+  }
   
 }

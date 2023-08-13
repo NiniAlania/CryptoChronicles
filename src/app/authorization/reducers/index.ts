@@ -30,3 +30,13 @@ export const selectUser = createSelector(
     selectAuthUserState,
     (state) => state.user
 )
+
+export const selectLoading = createSelector(
+    selectAuthUserState,
+    (state) => state.loading
+)
+
+export const selectError = createSelector(
+    selectAuthUserState,
+    (state) => state.error
+)
