@@ -1,0 +1,26 @@
+<div>
+    <div *ngIf="error$ | async">
+        <cc-no-data></cc-no-data>
+    </div>
+    <ng-container *ngIf="!(error$ | async)">
+        <div *ngIf="loading$ | async">
+            <cc-spinner></cc-spinner>
+        </div>
+        <ng-container *ngIf="!(loading$ | async)">
+            <ng-container *ngIf="!(blog$ | async)">
+                <cc-no-data></cc-no-data>
+            </ng-container>
+           <div class="cc-blogs">
+            <div class="cc-blogs__container" *ngIf="blog$ | async as blog">
+                <h1 class="cc-blogs__title">{{blog.title}}</h1>
+                <div class="cc-blogs__moreinfo">Published {{blog.createdAt.toDate() | date:'yyyy/MM/dd'}}</div>
+                <div class="cc-blogs__moreinfo">By {{blog.author}}</div>
+                <div class="cc-blogs__for-image">
+                    <img class="cc-blogs__for-image__image" [src]="blog.imageUrl"/>
+                </div>
+                <div class="cc-blogs__text">{{blog.content}}</div>
+            </div>
+           </div>
+        </ng-container>
+    </ng-container>
+</div>

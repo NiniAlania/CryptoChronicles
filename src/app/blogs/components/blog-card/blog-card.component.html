@@ -1,0 +1,8 @@
+<div class="cc-card" *ngIf="blog as blog">
+    <img class="cc-card__image" [src]="blog.imageUrl"/>
+    <div class="cc-card__details">
+        <div class="cc-card__title">{{blog.title}}</div>
+        <div class="cc-card__author">{{blog.author}}</div>
+        <div class="cc-card__date">{{blog.createdAt.toDate() | date:'yyyy/MM/dd' }}</div>
+    </div>
+</div>
