@@ -1,20 +1,16 @@
 @use "../../../shared/styles/shared";
 
 .cc-coin-page {
-    // width: 80%;
-    // display: flex;
-    // flex-direction: column;
 
-    // &__top {
-    //     height: 5%;
-    // }
+    &__top {
+        width: 200px;
+        margin: 0px;
+        display: inline;
+    }
 
-    &__styling {
-        width: 16%;
-        display: flex;
-        align-items: center;
 
         &__button {
+            width: 140px;
             background-color: transparent;
             border: 0px;
             font-family: shared.$primary-font;
@@ -26,18 +22,8 @@
             }
     
         }
-    }
     
-
-    // &__middle {
-    //     height: 40%;
-    //     width: 70%;
-    // }
-
-    // &__bottom {
-    //     width: 100%;
-    //     height: 55%;
-    // }
+    
 }
 
   

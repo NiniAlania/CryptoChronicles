@@ -44,6 +44,18 @@
     z-index: 99;
     height: 100vh;
 
+    @media (max-width: 1350px) {
+        width: 130px;
+    }
+
+
+    @media (max-width: 640px) {
+        width: 65px;
+    }
+
+
+    
+
     &__name-box {
         display: flex;
         justify-content: center;
@@ -59,6 +71,10 @@
         font-family: shared.$headline-font;
         color: shared.$font-color;
         font-size: 22px;
+
+        @media (max-width: 1350px) {
+            display: none;
+        }
         
         &__transparent {
             opacity: 0.5;
@@ -71,7 +87,25 @@
         border-bottom: 2px solid shared.$border-color;
 
         &__tab-group {
-            border-bottom: 1px solid shared.$border-color;
+            
+            @media(max-width: 1350px) {
+                display: none;
+            }
+        }
+
+        &__tab-responsive {
+            display: none;
+            width: 50px;
+
+            @media (max-width: 1350px) {
+                display: block;
+            }
+
+            @media (max-width: 640px) {
+                display: block;
+                margin: 0px;
+                padding: 0px 0px 0px 5px;
+            }
         }
 
         &__tab {
@@ -107,6 +141,11 @@
             @include caption;
             font-size: 10px;
             margin-left: 50px;
+
+            @media (max-width: 640px) {
+                margin: 0px 0px 0px 10px;
+                padding: 0px;
+            }
         }
 
         &__picker {
@@ -129,10 +168,27 @@
                 background-color: #EFEFEF;
             }
 
+
+            @media (max-width: 1350px) {
+            width: 45%;
+            padding: 0px;
+            margin: 10px 0px 2px 45px;
+            justify-content: space-evenly;
+            }
+
+            @media (max-width: 640px) {
+                width: 61px;
+                height: 60px;
+                margin: 0px 0px 0px 3px;
+            }
+
+        
+
             &__content {
                 display: flex;
                 justify-content: center;
                 width: 200px;
+
             }
 
             &__simbol {
@@ -160,12 +216,29 @@
         overflow: hidden;
         margin: 10px 0px 0px 23px;
         position: fixed;
+
+
+        @media (max-width: 1350px) {
+            width: 100px;
+        }
+
+        @media (max-width: 640px) {
+            width: 50px;
+            height: 120px;
+            margin-left: 10px;
+
+        }
+        
     
 
         &__caption {
             @include caption;
             font-size: 12px;
             margin: 10px 0px 0px 15px;
+
+            @media (max-width: 640px) {
+                display: none;
+            }
 
         }
        
@@ -177,6 +250,7 @@
         justify-content: flex-start;
         align-items: center;
         height: 140px;
+
     
         &__usd {
             @include change-currency;
@@ -191,15 +265,27 @@
             width: 25px;
             height: 25px;
             margin-top: 5px;
+
+            @media (max-width: 640px) {
+              margin-left: 6px;
+            }
         }
 
         &__name {
             margin-top: 7px;
             margin-left: 5px;
+
+            @media (max-width: 640px) {
+                display: none;
+            }
         }
 
         &__circle {
             margin-left: 100px;
+
+            @media (max-width: 640px) {
+                display: none;
+            }
         }
     
     }
@@ -230,6 +316,7 @@
             background-color: transparent;
             width: 100%;
             height: 40px;
+            margin-bottom: 30px;
 
             &:hover {
                 background-color: shared.$hover-color;
