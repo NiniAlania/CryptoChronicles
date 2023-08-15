@@ -1,0 +1,18 @@
+<div class="cc-blog-container">
+    <div *ngIf="error$ | async">
+        <cc-no-data></cc-no-data>
+    </div>
+    <ng-container *ngIf="!(error$ | async)">
+        <div *ngIf="loading$ | async">
+            <cc-spinner></cc-spinner>
+        </div>
+        <ng-container *ngIf="!(loading$ | async)">
+            <ng-container *ngIf="!(blogs$ | async)">
+                <cc-no-data></cc-no-data>
+            </ng-container>
+            <div  class="cc-blogs"  (click)="openBlog(blog.id)"  *ngFor="let blog of blogs$ | async">
+                <cc-blog-card class="cc-blogs__card" [blog]="blog"></cc-blog-card>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>
