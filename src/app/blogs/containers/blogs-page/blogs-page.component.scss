@@ -12,4 +12,8 @@
     &__card {
         width: 100%;
     }
+
+    @media (max-width: 600px) {
+        flex-basis: 100%;
+    }
 }

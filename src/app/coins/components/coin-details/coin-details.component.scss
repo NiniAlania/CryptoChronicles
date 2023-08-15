@@ -4,6 +4,10 @@
 .cc-coin-details {
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 550px) {
+        margin-left: 10px;
+     }
     
 
     &__name { 
@@ -14,6 +18,11 @@
         &__logo {
             width: 40px;
             height: 37px;
+
+            @media (max-width: 400px) {
+                width: 30px;
+                height: 27px;
+          }
         }
 
         &__text {
@@ -21,6 +30,10 @@
             color: shared.$font-color;
             font-size: 26px;
             margin-left: 5px;
+
+            @media (max-width: 400px) {
+                font-size: 20px;
+          }
         }
     }
 
@@ -32,19 +45,31 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+
     }
 
     &__top {
         display: flex;
         justify-content: center;
         width: 100%;
-        height: 20%;
     }
 
     &__frame {
         width: 90%;
         display: flex;
         align-items: center;
+
+        @media (max-width: 450px) {
+            justify-content: center;
+          }
+
+        &__price {
+
+            @media (max-width: 320px) {
+                font-size: 12px;
+              }
+        }
+
 
         &__price-change {
             margin-left: 5px;
@@ -56,6 +81,13 @@
         justify-content: space-around;
         height: 60%;
         margin-bottom: 10px;
+
+        @media (max-width: 450px) {
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
     }
 
     &__shadow-box {
@@ -63,6 +95,10 @@
         border: 2px solid shared.$border-color;
         width: 40%;
         height: 80px;
+
+        @media (max-width: 450px) {
+            width: 60%;
+          }
 
         &__title {
             display: flex;
@@ -76,6 +112,19 @@
 
         &__value {
             margin-left: 10px;
+            width: fit-content;
+
+            @media (max-width: 810px) {
+               font-size: 12px;
+            }
+
+            @media (max-width: 810px) {
+                font-size: 9px;
+             }
+
+             @media (max-width: 310px) {
+                font-size: 7px;
+             }
 
         }
 

@@ -4,7 +4,7 @@
         <h3 class="cc-drawer__project-name">Crypto<span class="cc-drawer__project-name__transparent">Chronicles.</span></h3>
     </div>
     <nav class="cc-drawer__nav">
-        <ul class="cc-drawer__tab-group">
+        <ul class="cc-drawer__nav__tab-group">
             <li class="cc-drawer__nav__tab" routerLink="/coins" routerLinkActive="cc-drawer__nav__tab--active" 
             [routerLinkActiveOptions]="{
                 matrixParams: 'exact',
@@ -15,6 +15,18 @@
             <li class="cc-drawer__nav__tab" routerLink="/coins/favorites" routerLinkActive="cc-drawer__nav__tab--active"><i class="fa-solid fa-star-of-david cc-drawer__nav__icon"></i>Favorites</li>
             <li class="cc-drawer__nav__tab" routerLink="/blogs" routerLinkActive="cc-drawer__nav__tab--active"><i class="fa-regular fa-newspaper cc-drawer__nav__icon"></i>Blogs</li>
             <li class="cc-drawer__nav__tab" routerLink="/coins/search" routerLinkActive="cc-drawer__nav__tab--active"><i class="fa-brands fa-searchengin cc-drawer__nav__icon"></i>Search</li>
+        </ul>
+        <ul class="cc-drawer__nav__tab-responsive">
+            <li class="cc-drawer__nav__tab" routerLink="/coins" routerLinkActive="cc-drawer__nav__tab--active" 
+            [routerLinkActiveOptions]="{
+                matrixParams: 'exact',
+                queryParams: 'ignored',
+                paths: 'exact',
+                fragment: 'exact'
+            }"><i class="fa-solid fa-igloo cc-drawer__nav__icon"></i></li>
+            <li class="cc-drawer__nav__tab" routerLink="/coins/favorites" routerLinkActive="cc-drawer__nav__tab--active"><i class="fa-solid fa-star-of-david cc-drawer__nav__icon"></i></li>
+            <li class="cc-drawer__nav__tab" routerLink="/blogs" routerLinkActive="cc-drawer__nav__tab--active"><i class="fa-regular fa-newspaper cc-drawer__nav__icon"></i></li>
+            <li class="cc-drawer__nav__tab" routerLink="/coins/search" routerLinkActive="cc-drawer__nav__tab--active"><i class="fa-brands fa-searchengin cc-drawer__nav__icon"></i></li>
         </ul>
     </nav>
     <div class="cc-drawer__currency">
@@ -42,17 +54,16 @@
     
             </div>
         </div>
-        <div class="cc-drawer__authorization">
-            <div class="cc-drawer__authorization__sign" *ngIf="!user">
-                <button class="cc-drawer__authorization__button" routerLink="/auth">
-                    Sign In
-                </button>
-            </div>
-            <div class="cc-drawer__authorization__sign" *ngIf="user">
-                <button class="cc-drawer__authorization__button" (click)="logOut()">
-                    Sign Out
-                </button>
-            </div>
-       </div>
     </div>
+    <div class="cc-drawer__authorization">
+        <div class="cc-drawer__authorization__sign" *ngIf="!user">
+            <button class="cc-drawer__authorization__button" routerLink="/auth">
+                Sign In
+            </button>
+        </div>
+        <div class="cc-drawer__authorization__sign" *ngIf="user">
+            <button class="cc-drawer__authorization__button" (click)="logOut()">
+                Sign Out
+            </button>
+        </div>
 </div>

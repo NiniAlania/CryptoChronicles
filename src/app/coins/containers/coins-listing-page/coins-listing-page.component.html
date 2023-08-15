@@ -16,7 +16,7 @@
                 matchingList: (matchingList$ | async)
             } as data">
             <cc-dropdown [current]="data.pageSize" (pageSizeChanged)="changePageSize($event)"></cc-dropdown>
-            <cc-coin-table [coins]="data.coins"
+            <cc-coin-table class="scroll" [coins]="data.coins"
             [page]="data.page" 
             [pageSize]="data.pageSize" 
             [currency]="data.currency" 

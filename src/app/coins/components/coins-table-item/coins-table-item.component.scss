@@ -31,14 +31,34 @@
         border: 2px solid #355dff;
     }
 
+
+
     &__star-sign {
         width: 4%;
         @include flex-end;
+
+        @media (max-width: 850px) {
+            padding-left: 10px;
+        }
+
+
+        // @media (max-width: 440px) {
+        //    width: 18px;
+        //    padding: 0px 10px 0px 0px;
+        // }
+        
+
     }
 
     &__star {
         width: 20px;
         height: 20px;
+        margin-left: 10px;
+
+        @media (max-width: 440px) {
+            margin: 0px;
+         }
+
     }
 
 
@@ -47,6 +67,17 @@
         width: 4%;
         font-size: 12px;
         font-family: shared.$primary-font;
+
+
+        @media (max-width: 850px) {
+            padding-left: 10px;
+        }
+
+        @media (max-width: 440px) {
+            width: 40px;
+            padding: 0px 10px 0px 0px;
+         }
+
     }
 
     &__coin {
@@ -56,53 +87,111 @@
         align-items: center;
         margin-left: 45px;
 
+    
         &__logo {
             width: 20px;
             height: 20px;
             padding-right: 10px;
         }
+
+        @media (max-width: 440px) {
+            width: 65%;
+            margin: 0px;
+            justify-content: center;
+         }
     }
 
     &__price {
         @include flex-end;
         width: 8%;
+
+        @media (max-width: 1200px) {
+            width: 75%;
+            padding-right: 20px;
+        }
+
+        @media (max-width: 880px) {
+            padding-right: 50px;
+        }
+
+        @media (max-width: 540px) {
+            padding-right: 0px;
+        }
+
+        @media (max-width: 440px) {
+            display: none;
+        }
+
     }
 
     &__1h {
-       @include row
+       @include row;
+
+       @media (max-width: 1200px) {
+            display: none;
+        }
     }
 
     &__24h {
-        @include row
+        @include row;
+
+        @media (max-width: 1200px) {
+            display: none;
+        }
      }
 
     &__7days {
-        @include row
+        @include row;
+
+        @media (max-width: 1200px) {
+            display: none;
+        }
     } 
 
     &__market-cap {
         @include second-part-row;
+
+        @media (max-width: 1200px) {
+            display: none;
+        }
     }
 
     &__volume {
         @include second-part-row;
 
+        @media (max-width: 1200px) {
+            display: none;
+        }
+
     }
 
     &__supply {
         @include second-part-row;
+
+        @media (max-width: 1200px) {
+            display: none;
+        }
     }
 
     &__chart {
         @include flex-end;
         width: 15%;
         margin-right: 5px;
+
     }
 
 
     &__chart__img {
         width: 152px;
         height: 48px;
+
+        @media (max-width: 1500px) {
+            width: 100px;
+        }
+
+        @media (max-width: 540px) {
+            display: none;
+        }
     }
 }
 

@@ -4,20 +4,61 @@
     width: 100%;
     padding-bottom: 30px;
 
+
+
     &__input {
-        width: 50%;
+        width: 850px;
         height: 40px;
         border: 2px solid shared.$border-color;
         border-radius: 8px;
         font-family: shared.$primary-font;
         font-size: 18px;
         padding-left: 10px ;
+
+    @media (max-width: 1100px) {
+       width: 550px;
+    }
+
+    @media (max-width: 800px) {
+       width: 350px;
+    }
+
+
+     @media (max-width: 560px) {
+       width: 250px;
+    }
+
+    @media (max-width: 550px) {
+        margin-left: 20px;
+    }
+
+
+    @media (max-width: 380px) {
+        width: 177px;
+        font-size: 13px;
+        margin-left: 15px;
+    }
+
+
+
     }
 
     &__nav {
-        width: 50%;
+        width: 500px;
         display: flex;
         justify-content: center;
+        margin: 0px;
+
+        @media (max-width: 800px) {
+            width: 300px;
+         }
+
+         @media (max-width: 560px) {
+             width: 200px;
+        }
+
+
+        
     }
 
     &__for-nav {
@@ -30,11 +71,24 @@
         margin: 3px 0px 3px 3px;
         box-shadow: 10px 18px 48px #00000014;
         padding: 0px 0px 0px 5px ;
+        
+        @media (max-width: 550px) {
+            margin-left: 32px;
+        }
+
+        @media (max-width: 370px) {
+            margin-left: 28px;
+        }
+    
 
 
         &__li {
             list-style: none;
             margin-left: 4px;
+
+              @media (max-width: 560px) {
+                 font-size: 10px;
+            }
         }
 
     }

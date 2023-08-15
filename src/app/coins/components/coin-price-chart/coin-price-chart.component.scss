@@ -1,6 +1,11 @@
 .cc-coin-chart {
     width: 100%;
 
+
+    @media (max-width: 550px) {
+        margin-left: 10px;
+     }
+
     &__graphic {
     width: 80%;
     height: 350px;

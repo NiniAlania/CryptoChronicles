@@ -11,12 +11,12 @@
             <ng-container *ngIf="!(searchResult$ | async)">
                 <cc-no-data></cc-no-data>
             </ng-container>
-            <nav class="cc-search-coin__nav" (click)="coinSelected(coin.id)"  *ngFor="let coin of searchResult$ | async;  let i = index">
+            <div class="cc-search-coin__nav" (click)="coinSelected(coin.id)"  *ngFor="let coin of searchResult$ | async;  let i = index">
                 <div class="cc-search-coin__for-nav">
                         <img src="{{coin.thumb}}" alt="">
                         <li class="cc-search-coin__for-nav__li">{{coin.name}}</li>
                 </div>
-            </nav>
+            </div>
         </ng-container>
     </ng-container>
 </div>

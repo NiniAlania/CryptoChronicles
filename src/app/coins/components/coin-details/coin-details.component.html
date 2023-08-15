@@ -6,7 +6,7 @@
     <div class="cc-coin-details__box">
        <div class="cc-coin-details__top">
             <div class="cc-coin-details__frame">
-                <h2>{{currencySymbol}}{{ coinDetails?.price }}</h2>
+                <h2 class="cc-coin-details__frame__price">{{currencySymbol}}{{ coinDetails?.price }}</h2>
                 <div class="cc-coin-details__frame__price-change"> {{ coinDetails?.priceChange | number: '1.1-1' }}</div>
             </div>
         </div>

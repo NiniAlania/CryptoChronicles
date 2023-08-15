@@ -52,5 +52,12 @@ export const reducer = createReducer(
             error: null
         })
     ),
+    on(AuthPageActions.logout,
+        (state) => ({
+            ...state,
+            user: null,
+            loading: false,
+            error: null
+        }))
 )
 
