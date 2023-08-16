@@ -11,6 +11,11 @@
                 <cc-no-data></cc-no-data>
             </ng-container>
            <div class="cc-blogs">
+            <div class="cc-blogs__top">
+                <button class="cc-blogs__button"  type="button" (click)="back()">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back To Listing</button>
+            </div>
             <div class="cc-blogs__container" *ngIf="blog$ | async as blog">
                 <h1 class="cc-blogs__title">{{blog.title}}</h1>
                 <div class="cc-blogs__moreinfo">Published {{blog.createdAt.toDate() | date:'yyyy/MM/dd'}}</div>
