@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { CoinMarketData } from '../../models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'cc-coins-table-item',
@@ -12,9 +12,11 @@ export class CoinsTableItemComponent implements OnChanges {
   @Input() coin: CoinMarketData | null = null;
   @Input() currency: string | null = null;
   @Input() match: boolean | undefined = false;
+  
 
   @Output() addedToFavorites = new EventEmitter<void>(); 
   isColored: boolean | undefined = false;
+
 
   ngOnChanges() {
     this.isColored = this.match;

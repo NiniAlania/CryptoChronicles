@@ -3,7 +3,45 @@
 .cc-blogs {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+
+    &__top {
+        width: 80%;
+        display: inline;
+    }
+
+
+    &__button {
+        width: 80%;
+        background-color: transparent;
+        border: 0px;
+        font-family: shared.$primary-font;
+        font-size: 16px;
+        color: shared.$font-color;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        &:hover {
+            color: shared.$focus-color;
+        }
+
+        @media (max-width: 700px) {
+            font-size: 14px;
+        }
+
+        @media (max-width: 450px) {
+            font-size: 12px;
+        }
+
+
+        @media (max-width: 350px) {
+            font-size: 10px;
+        }
+
+    }
 
 
     &__container {
@@ -45,6 +83,7 @@
         justify-content: flex-start;
 
         &__image {
+          
             position: relative;
             width: 100%;
             border-radius: 5px;

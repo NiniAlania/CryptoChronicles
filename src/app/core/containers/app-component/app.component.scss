@@ -14,7 +14,7 @@
         margin: 0px 50px 0px 320px;
 
         &__middle {
-            min-height: 620px;
+            min-height: calc(100vh - 426px);
         }
 
 

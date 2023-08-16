@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import * as fromBlogs from '../../reducers';
 import { Blog } from '../../models';
 import { BlogPageActions } from '../../actions';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-blog-page',
@@ -17,6 +18,7 @@ export class BlogPageComponent implements OnInit {
 
   constructor(
     private store: Store,
+    private location: Location
   ) {
     this.blog$ = this.store.select(fromBlogs.selectBlog);
     this.loading$ = this.store.select(fromBlogs.selectBlogLoading);
@@ -25,5 +27,9 @@ export class BlogPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(BlogPageActions.enter());
+  }
+
+  back() {
+    this.location.back();
   }
 }

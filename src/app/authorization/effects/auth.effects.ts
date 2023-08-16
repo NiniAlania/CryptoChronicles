@@ -6,6 +6,19 @@ import { AuthPageActions } from "../actions";
 import { AuthService } from "../services";
 import { routerNavigatedAction } from "@ngrx/router-store";
 
+function transformError(errorCode: string): string {
+    switch(errorCode) {
+        case 'auth/wrong-password':
+            return 'Wrong Passowrd';
+            case 'auth/user-not-found':
+                return 'User not found';
+            case 'auth/email-already-in-use':
+                return 'Email already in use';
+            default: 
+                return 'Unknown error';
+    }
+}
+
 @Injectable()
 export class AuthEffects {
     login$ = createEffect(() => {
@@ -17,7 +30,8 @@ export class AuthEffects {
                     return AuthPageActions.authSuccess({user, redirect: true});
                 }),
                 catchError((error) => {
-                    return of(AuthPageActions.authFailed({error: error.code}));
+                    const errorMessage = transformError(error.code);
+                    return of(AuthPageActions.authFailed({error: errorMessage}));
                 })
                )
             })
@@ -30,11 +44,11 @@ export class AuthEffects {
             switchMap(({data}) => {
                 return this.authService.register(data).pipe(
                     map((user) => {
-                        console.log(user)
                         return AuthPageActions.authSuccess({user, redirect: true});
                     }),
                     catchError((error) => {
-                        return of(AuthPageActions.authFailed({error: error.code}));
+                        const errorMessage = transformError(error.code);
+                        return of(AuthPageActions.authFailed({error: errorMessage}));
                     })
                 )
              })

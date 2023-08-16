@@ -1,0 +1,36 @@
+@use "../styles/shared";
+
+.cc-alert { 
+    width: 400px;
+    height: 200px;
+    background-color: shared.$focus-color;
+    border-radius: 8px;
+    box-shadow: 0 18px 48px #00000014;
+    position: fixed;
+    top: 150px;
+    left: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    &__message {
+        color: white;
+        font-family: shared.$primary-font;
+        font-size: 20px;
+    }
+
+    &__button {
+        width: 100px;
+        height: 40px;
+        border: 0px;
+        border-radius: 8px;
+        background-color: white;
+        color: shared.$font-color;
+        cursor: pointer;
+    }
+
+
+
+}
